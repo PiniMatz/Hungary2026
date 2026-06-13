@@ -272,6 +272,29 @@ ${imageMarkdown}
       await writeToGitHub('db.json', updatedDbBase64, `Add idea to database: ${newIdea.title}`, dbFile ? dbFile.sha : null);
       await writeCompiledMarkdownCloud(ideas);
 
+      // Send to Google Apps Script if URL is configured in Vercel environment variables
+      const appsScriptUrl = process.env.GOOGLE_APPS_SCRIPT_URL;
+      if (appsScriptUrl) {
+        try {
+          await fetch(appsScriptUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              title: newIdea.title,
+              author: newIdea.author,
+              category: newIdea.category,
+              excitement: newIdea.excitement,
+              date: newIdea.date,
+              link: newIdea.link,
+              description: newIdea.description
+            })
+          });
+          console.log('Successfully synced to Google Doc via Apps Script');
+        } catch (err) {
+          console.error('Error syncing to Apps Script:', err);
+        }
+      }
+
       return res.status(201).json(newIdea);
     }
 
