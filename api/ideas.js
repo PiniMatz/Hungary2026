@@ -86,6 +86,45 @@ async function writeToGitHub(filePath, base64Content, commitMessage, sha = null)
   return await res.json();
 }
 
+// Helper: Generate and write compiled Markdown notebook to GitHub
+async function writeCompiledMarkdownCloud(ideas) {
+  let md = `# 🗺️ לוח ההרפתקאות: טיול משפחתי להונגריה 2026 🇭🇺\n\n`;
+  md += `מסמך זה מרכז את כל ההצעות, הקישורים והרעיונות של המשפחה לטיול.\n\n`;
+
+  ideas.forEach(idea => {
+    md += `## ${idea.category}: ${idea.title}\n`;
+    md += `**הוצע על ידי**: ${idea.author} | **תאריך**: ${new Date(idea.date).toLocaleDateString('he-IL')}\n`;
+    md += `**רמת התלהבות**: ${"⭐".repeat(idea.excitement)} (${idea.excitement}/5)\n\n`;
+    
+    if (idea.reactions && Object.keys(idea.reactions).length > 0) {
+      const reactionParts = Object.entries(idea.reactions)
+        .map(([emoji, voters]) => `${emoji} (${voters.join(', ')})`)
+        .join(', ');
+      md += `**תגובות**: ${reactionParts}\n\n`;
+    }
+
+    if (idea.link) {
+      md += `**קישור**: [לצפייה באתר/מפה](${idea.link})\n\n`;
+    }
+    
+    md += `### למה כדאי לנו ללכת:\n${idea.description}\n\n`;
+    
+    if (idea.imagePath) {
+      md += `### תמונה מצורפת:\n![תמונה מצורפת](${idea.imagePath})\n\n`;
+    }
+    
+    md += `---\n\n`;
+  });
+
+  const mdBase64 = Buffer.from(md).toString('base64');
+  
+  // Read current trip_notebook.md to get its SHA (if it exists)
+  const notebookFile = await readFromGitHub('trip_notebook.md');
+  const sha = notebookFile ? notebookFile.sha : null;
+
+  await writeToGitHub('trip_notebook.md', mdBase64, 'Update compiled travel notebook', sha);
+}
+
 export default async function handler(req, res) {
   try {
     const repo = process.env.GITHUB_REPO;
@@ -137,9 +176,10 @@ export default async function handler(req, res) {
           delete idea.reactions[emoji];
         }
 
-        // Commit updated db.json back to GitHub
+        // Commit updated db.json and trip_notebook.md back to GitHub
         const updatedDbBase64 = Buffer.from(JSON.stringify(ideas, null, 2)).toString('base64');
         await writeToGitHub('db.json', updatedDbBase64, `Reaction update to idea ${id} by ${kidName}`, dbFile.sha);
+        await writeCompiledMarkdownCloud(ideas);
 
         return res.status(200).json(idea);
       }
@@ -230,6 +270,7 @@ ${imageMarkdown}
 
       const updatedDbBase64 = Buffer.from(JSON.stringify(ideas, null, 2)).toString('base64');
       await writeToGitHub('db.json', updatedDbBase64, `Add idea to database: ${newIdea.title}`, dbFile ? dbFile.sha : null);
+      await writeCompiledMarkdownCloud(ideas);
 
       return res.status(201).json(newIdea);
     }

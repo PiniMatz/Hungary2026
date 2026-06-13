@@ -199,6 +199,49 @@ ${imageMarkdown}
   console.log(`Markdown file written: ${filePath}`);
 }
 
+// Helper: Generate and write compiled Markdown notebook file
+function writeCompiledMarkdown(ideas, settings) {
+  if (settings.syncMode === 'cloud') return;
+
+  const syncPath = settings.localSyncPath;
+  if (!fs.existsSync(syncPath)) {
+    fs.mkdirSync(syncPath, { recursive: true });
+  }
+
+  let md = `# 🗺️ לוח ההרפתקאות: טיול משפחתי להונגריה 2026 🇭🇺\n\n`;
+  md += `מסמך זה מרכז את כל ההצעות, הקישורים והרעיונות של המשפחה לטיול.\n\n`;
+
+  ideas.forEach(idea => {
+    md += `## ${idea.category}: ${idea.title}\n`;
+    md += `**הוצע על ידי**: ${idea.author} | **תאריך**: ${new Date(idea.date).toLocaleDateString('he-IL')}\n`;
+    md += `**רמת התלהבות**: ${"⭐".repeat(idea.excitement)} (${idea.excitement}/5)\n\n`;
+    
+    if (idea.reactions && Object.keys(idea.reactions).length > 0) {
+      const reactionParts = Object.entries(idea.reactions)
+        .map(([emoji, voters]) => `${emoji} (${voters.join(', ')})`)
+        .join(', ');
+      md += `**תגובות**: ${reactionParts}\n\n`;
+    }
+
+    if (idea.link) {
+      md += `**קישור**: [לצפייה באתר/מפה](${idea.link})\n\n`;
+    }
+    
+    md += `### למה כדאי לנו ללכת:\n${idea.description}\n\n`;
+    
+    if (idea.imagePath) {
+      const imageName = path.basename(idea.imagePath);
+      md += `### תמונה מצורפת:\n![תמונה מצורפת](assets/${imageName})\n\n`;
+    }
+    
+    md += `---\n\n`;
+  });
+
+  const filePath = path.join(syncPath, 'trip_notebook.md');
+  fs.writeFileSync(filePath, md, 'utf-8');
+  console.log(`Compiled Markdown file written: ${filePath}`);
+}
+
 // 4. Submit a new idea (handles JSON submission for photo/drawing/text)
 app.post('/api/ideas', (req, res) => {
   try {
@@ -247,12 +290,13 @@ app.post('/api/ideas', (req, res) => {
       newIdea.imagePath = `uploads/${drawingFilename}`;
     }
 
-    // Write to Markdown file for NotebookLM sync
-    writeMarkdownFile(newIdea, settings);
-
     // Save to server local JSON database
     ideas.unshift(newIdea);
     saveIdeas(ideas);
+
+    // Write to Markdown files for NotebookLM sync
+    writeMarkdownFile(newIdea, settings);
+    writeCompiledMarkdown(ideas, settings);
 
     res.status(201).json(newIdea);
   } catch (error) {
@@ -299,7 +343,9 @@ app.post('/api/ideas/:id/react', (req, res) => {
     delete idea.reactions[emoji];
   }
 
+  const settings = getSettings();
   saveIdeas(ideas);
+  writeCompiledMarkdown(ideas, settings);
   res.json(idea);
 });
 
