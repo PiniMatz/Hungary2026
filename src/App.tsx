@@ -5,10 +5,10 @@ import IdeaFeed from './components/IdeaFeed';
 import ParentDashboard from './components/ParentDashboard';
 
 const DEFAULT_PROFILES: KidProfile[] = [
-  { id: '1', name: 'אורי', avatar: '🦊', color: '#f97316' }, // Fox - Orange
-  { id: '2', name: 'מאיה', avatar: '🦄', color: '#ec4899' }, // Unicorn - Pink
-  { id: '3', name: 'אדם', avatar: '🦁', color: '#10b981' }, // Lion - Emerald
-  { id: '4', name: 'שירה', avatar: '🐨', color: '#a855f7' }  // Koala - Purple
+  { id: '1', name: 'אמא', avatar: '🧭', color: '#f43f5e' }, // Compass - Rose
+  { id: '2', name: 'אבא', avatar: '🗺️', color: '#06b6d4' }, // Map - Cyan
+  { id: '3', name: 'סול', avatar: '🦄', color: '#ec4899' }, // Unicorn - Pink
+  { id: '4', name: 'סהר', avatar: '🦊', color: '#f97316' }  // Fox - Orange
 ];
 
 interface ConfettiItem {
