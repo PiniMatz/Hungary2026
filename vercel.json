@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/ideas/:id/react",
+      "destination": "/api/ideas.js?action=react&id=:id"
+    }
+  ]
+}
