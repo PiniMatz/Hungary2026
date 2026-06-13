@@ -78,7 +78,7 @@ export const ParentDashboard: React.FC<ParentDashboardProps> = ({ onSettingsSave
       linkPara.appendText(data.link).setLinkUrl(data.link);
     }
     
-    body.appendParagraph("למה כדאי לנו ללכת:\n" + data.description);
+    body.appendParagraph("למה כדאי לנו ללכת:\\n" + data.description);
     body.appendParagraph("\\n-----------------------------------------\\n");
     
     // שמירה וסנכרון
