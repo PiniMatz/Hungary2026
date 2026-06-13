@@ -7,8 +7,8 @@ import ParentDashboard from './components/ParentDashboard';
 const DEFAULT_PROFILES: KidProfile[] = [
   { id: '1', name: 'אמא', avatar: '🧭', color: '#f43f5e' }, // Compass - Rose
   { id: '2', name: 'אבא', avatar: '🗺️', color: '#06b6d4' }, // Map - Cyan
-  { id: '3', name: 'סול', avatar: '🦄', color: '#ec4899' }, // Unicorn - Pink
-  { id: '4', name: 'סהר', avatar: '🦊', color: '#f97316' }  // Fox - Orange
+  { id: '3', name: 'סול', avatar: '🎼', color: '#ec4899' }, // Treble Clef - Pink
+  { id: '4', name: 'סהר', avatar: '🐷', color: '#f97316' }  // Pig - Orange
 ];
 
 interface ConfettiItem {
