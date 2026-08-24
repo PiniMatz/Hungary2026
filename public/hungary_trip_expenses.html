@@ -281,6 +281,7 @@
       font-weight: 500;
     }
 
+    .badge-flight { background: rgba(96, 165, 250, 0.15); color: #60a5fa; }
     .badge-hotel { background: rgba(192, 132, 252, 0.15); color: #c084fc; }
     .badge-food { background: rgba(251, 113, 133, 0.15); color: #fb7185; }
     .badge-attraction { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
@@ -329,12 +330,12 @@
     <div class="kpi-card kpi-total">
       <div class="kpi-title">סה"כ הוצאות כולל (ש"ח)</div>
       <div class="kpi-value" id="total-nis-val">₪0</div>
-      <div class="kpi-sub">כולל מלונות, רכב, טיסות ויומיות</div>
+      <div class="kpi-sub">כולל טיסות, מלונות, רכב ויומיות</div>
     </div>
     <div class="kpi-card kpi-prebook">
       <div class="kpi-title">הזמנות מראש (ש"ח)</div>
       <div class="kpi-value" id="prebook-nis-val">₪0</div>
-      <div class="kpi-sub">Kolping, AVIS, 7Seasons, ביטוח</div>
+      <div class="kpi-sub">טיסות, Kolping, AVIS, 7Seasons, ביטוח</div>
     </div>
     <div class="kpi-card kpi-laya">
       <div class="kpi-title">הוצאות שוטפות Laya (ש"ח)</div>
@@ -391,6 +392,7 @@
       <div class="filter-group">
         <select id="category-filter" class="select-input" onchange="renderTable()">
           <option value="all">כל הקטגוריות</option>
+          <option value="טיסות ותחבורה">טיסות ותחבורה</option>
           <option value="מלונות ואירוח">מלונות ואירוח</option>
           <option value="תחבורה, דלק וחניה">תחבורה, דלק וחניה</option>
           <option value="מסעדות ובתי קפה">מסעדות ובתי קפה</option>
@@ -436,6 +438,16 @@
 
 <script>
   const expensesData = [
+  {
+    "date": "Pre-booked",
+    "desc": "כטיסי טיסה (Plane Tickets)",
+    "cat": "טיסות ותחבורה",
+    "origCurrency": "NIS",
+    "origAmount": 7426.77,
+    "rate": 1,
+    "nisAmount": 7426.77,
+    "source": "הזמנה מראש (ש\"ח)"
+  },
   {
     "date": "Pre-booked",
     "desc": "Kolping Hotel (Reservation)",
@@ -1113,6 +1125,7 @@
     });
 
     const colors = {
+      'טיסות ותחבורה': '#60a5fa',
       'מלונות ואירוח': '#c084fc',
       'תחבורה, דלק וחניה': '#4ade80',
       'מסעדות ובתי קפה': '#fb7185',
@@ -1156,12 +1169,13 @@
 
     prebookItems.forEach(i => {
       const badgeClass = getBadgeClass(i.cat);
+      const origSymbol = i.origCurrency === 'EUR' ? '€' : i.origCurrency === 'HUF' ? 'Ft' : i.origCurrency === 'USD' ? '$' : '₪';
       html += `
         <tr>
           <td style="font-weight:600;">${i.desc}</td>
           <td><span class="badge ${badgeClass}">${i.cat}</span></td>
           <td>${i.origCurrency}</td>
-          <td>${i.origCurrency === 'EUR' ? '€' : i.origCurrency === 'HUF' ? 'Ft' : '$'}${i.origAmount.toLocaleString()}</td>
+          <td>${origSymbol}${i.origAmount.toLocaleString()}</td>
           <td>${i.rate.toFixed(4)}</td>
           <td style="font-weight:600; color:var(--accent-blue);">₪${i.nisAmount.toLocaleString('he-IL', {maximumFractionDigits:2})}</td>
         </tr>
@@ -1172,6 +1186,7 @@
   }
 
   function getBadgeClass(cat) {
+    if (cat === 'טיסות ותחבורה') return 'badge-flight';
     if (cat === 'מלונות ואירוח') return 'badge-hotel';
     if (cat === 'מסעדות ובתי קפה') return 'badge-food';
     if (cat === 'אטרקציות ובילויים') return 'badge-attraction';
