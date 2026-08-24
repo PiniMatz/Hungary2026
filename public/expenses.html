@@ -89,7 +89,7 @@
     /* KPI Grid */
     .kpi-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1.25rem;
       margin-bottom: 2rem;
     }
@@ -111,7 +111,8 @@
 
     .kpi-total::before { background: var(--accent-blue); }
     .kpi-prebook::before { background: var(--accent-purple); }
-    .kpi-laya::before { background: var(--accent-amber); }
+    .kpi-laya9191::before { background: var(--accent-amber); }
+    .kpi-laya1290::before { background: var(--accent-rose); }
     .kpi-direct::before { background: var(--accent-green); }
 
     .kpi-title {
@@ -121,7 +122,7 @@
     }
 
     .kpi-value {
-      font-size: 1.875rem;
+      font-size: 1.75rem;
       font-weight: 700;
       margin-bottom: 0.25rem;
     }
@@ -219,19 +220,20 @@
       font-size: 0.9rem;
     }
 
-    .search-input { width: 220px; }
+    .search-input { width: 200px; }
     .select-input { cursor: pointer; }
 
     .filter-tabs {
       display: flex;
-      gap: 0.5rem;
+      gap: 0.4rem;
+      flex-wrap: wrap;
     }
 
     .tab-btn {
       background: #0f172a;
       border: 1px solid var(--card-border);
       color: var(--text-muted);
-      padding: 0.5rem 1rem;
+      padding: 0.5rem 0.85rem;
       border-radius: 8px;
       font-family: inherit;
       font-size: 0.85rem;
@@ -290,6 +292,9 @@
     .badge-insurance { background: rgba(167, 139, 250, 0.15); color: #a78bfa; }
     .badge-other { background: rgba(148, 163, 184, 0.15); color: #94a3b8; }
 
+    .tag-laya9191 { background: rgba(251, 191, 36, 0.2); color: #fbbf24; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight:600; font-size: 0.78rem; }
+    .tag-laya1290 { background: rgba(251, 113, 133, 0.2); color: #fb7185; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight:600; font-size: 0.78rem; }
+
     .summary-bar {
       margin-top: 1rem;
       padding: 0.75rem 1rem;
@@ -330,22 +335,22 @@
     <div class="kpi-card kpi-total">
       <div class="kpi-title">סה"כ הוצאות כולל (ש"ח)</div>
       <div class="kpi-value" id="total-nis-val">₪0</div>
-      <div class="kpi-sub">כולל טיסות, מלונות, רכב ויומיות</div>
+      <div class="kpi-sub">טיסות, מלונות, רכב וכלל היומיות</div>
     </div>
     <div class="kpi-card kpi-prebook">
       <div class="kpi-title">הזמנות מראש (ש"ח)</div>
       <div class="kpi-value" id="prebook-nis-val">₪0</div>
       <div class="kpi-sub">טיסות, Kolping, AVIS, 7Seasons, ביטוח</div>
     </div>
-    <div class="kpi-card kpi-laya">
-      <div class="kpi-title">הוצאות שוטפות Laya (ש"ח)</div>
-      <div class="kpi-value" id="laya-nis-val">₪0</div>
-      <div class="kpi-sub" id="laya-huf-sub">512,187 Ft בסך הכל</div>
+    <div class="kpi-card kpi-laya9191">
+      <div class="kpi-title">Laya כרטיס 9191 (ש"ח)</div>
+      <div class="kpi-value" id="laya9191-nis-val">₪0</div>
+      <div class="kpi-sub" id="laya9191-sub">512,187 Ft (56 רכישות)</div>
     </div>
-    <div class="kpi-card kpi-direct">
-      <div class="kpi-title">תחבורה, סיורים ורומינג (ש"ח)</div>
-      <div class="kpi-value" id="direct-nis-val">₪0</div>
-      <div class="kpi-sub">SIM World8, סיורים, Deak F</div>
+    <div class="kpi-card kpi-laya1290">
+      <div class="kpi-title">Laya כרטיס 1290 (ש"ח)</div>
+      <div class="kpi-value" id="laya1290-nis-val">₪0</div>
+      <div class="kpi-sub" id="laya1290-sub">109,243 Ft (19 רכישות)</div>
     </div>
   </div>
 
@@ -406,7 +411,8 @@
         
         <div class="filter-tabs">
           <button class="tab-btn active" onclick="setSourceFilter('all', this)">הכל</button>
-          <button class="tab-btn" onclick="setSourceFilter('laya', this)">Laya בלבד</button>
+          <button class="tab-btn" onclick="setSourceFilter('9191', this)">Laya 9191</button>
+          <button class="tab-btn" onclick="setSourceFilter('1290', this)">Laya 1290</button>
           <button class="tab-btn" onclick="setSourceFilter('prebook', this)">הזמנות מראש</button>
         </div>
       </div>
@@ -440,7 +446,7 @@
   const expensesData = [
   {
     "date": "Pre-booked",
-    "desc": "כטיסי טיסה (Plane Tickets)",
+    "desc": "כרטיסי טיסה (Plane Tickets)",
     "cat": "טיסות ותחבורה",
     "origCurrency": "NIS",
     "origAmount": 7426.77,
@@ -526,7 +532,7 @@
     "origAmount": 569,
     "rate": 0.008984,
     "nisAmount": 5.11,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-23",
@@ -536,7 +542,7 @@
     "origAmount": 3980,
     "rate": 0.008984,
     "nisAmount": 35.76,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-23",
@@ -546,7 +552,7 @@
     "origAmount": 14860,
     "rate": 0.008984,
     "nisAmount": 133.5,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-23",
@@ -556,7 +562,7 @@
     "origAmount": 17100,
     "rate": 0.008984,
     "nisAmount": 153.63,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-23",
@@ -566,7 +572,7 @@
     "origAmount": 18000,
     "rate": 0.008984,
     "nisAmount": 161.71,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-22",
@@ -576,7 +582,7 @@
     "origAmount": 8470,
     "rate": 0.008984,
     "nisAmount": 76.09,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-22",
@@ -586,7 +592,7 @@
     "origAmount": 9500,
     "rate": 0.008984,
     "nisAmount": 85.35,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-22",
@@ -596,7 +602,7 @@
     "origAmount": 3000,
     "rate": 0.008984,
     "nisAmount": 26.95,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-22",
@@ -606,7 +612,7 @@
     "origAmount": 2300,
     "rate": 0.008984,
     "nisAmount": 20.66,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-22",
@@ -616,7 +622,7 @@
     "origAmount": 6400,
     "rate": 0.008984,
     "nisAmount": 57.5,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-21",
@@ -626,7 +632,7 @@
     "origAmount": 32560,
     "rate": 0.008984,
     "nisAmount": 292.52,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-21",
@@ -636,7 +642,7 @@
     "origAmount": 9166,
     "rate": 0.008984,
     "nisAmount": 82.35,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-21",
@@ -646,7 +652,7 @@
     "origAmount": 400,
     "rate": 0.008984,
     "nisAmount": 3.59,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-21",
@@ -656,7 +662,7 @@
     "origAmount": 3203,
     "rate": 0.008984,
     "nisAmount": 28.78,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-21",
@@ -666,7 +672,7 @@
     "origAmount": 33011,
     "rate": 0.008984,
     "nisAmount": 296.57,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-21",
@@ -676,7 +682,7 @@
     "origAmount": 30950,
     "rate": 0.008984,
     "nisAmount": 278.05,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-20",
@@ -686,7 +692,7 @@
     "origAmount": 4500,
     "rate": 0.008984,
     "nisAmount": 40.43,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-20",
@@ -696,7 +702,7 @@
     "origAmount": 6900,
     "rate": 0.008984,
     "nisAmount": 61.99,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-20",
@@ -706,7 +712,7 @@
     "origAmount": 3500,
     "rate": 0.008984,
     "nisAmount": 31.44,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-20",
@@ -716,7 +722,7 @@
     "origAmount": 2400,
     "rate": 0.008984,
     "nisAmount": 21.56,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-20",
@@ -726,7 +732,7 @@
     "origAmount": 10900,
     "rate": 0.008984,
     "nisAmount": 97.93,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-20",
@@ -736,7 +742,7 @@
     "origAmount": 6820,
     "rate": 0.008984,
     "nisAmount": 61.27,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-20",
@@ -746,7 +752,7 @@
     "origAmount": 3700,
     "rate": 0.008984,
     "nisAmount": 33.24,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-19",
@@ -756,7 +762,7 @@
     "origAmount": 5400,
     "rate": 0.008984,
     "nisAmount": 48.51,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-19",
@@ -766,7 +772,7 @@
     "origAmount": 17600,
     "rate": 0.008984,
     "nisAmount": 158.12,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-19",
@@ -776,7 +782,7 @@
     "origAmount": 7337,
     "rate": 0.008984,
     "nisAmount": 65.92,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-19",
@@ -786,7 +792,7 @@
     "origAmount": 8788,
     "rate": 0.008984,
     "nisAmount": 78.95,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-19",
@@ -796,7 +802,7 @@
     "origAmount": 3390,
     "rate": 0.008984,
     "nisAmount": 30.46,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-19",
@@ -806,7 +812,7 @@
     "origAmount": 2598,
     "rate": 0.008984,
     "nisAmount": 23.34,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-19",
@@ -816,7 +822,7 @@
     "origAmount": 6999,
     "rate": 0.008984,
     "nisAmount": 62.88,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-19",
@@ -826,7 +832,7 @@
     "origAmount": 8194,
     "rate": 0.008984,
     "nisAmount": 73.61,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-19",
@@ -836,7 +842,7 @@
     "origAmount": 29866,
     "rate": 0.008984,
     "nisAmount": 268.32,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-19",
@@ -846,7 +852,7 @@
     "origAmount": 35350,
     "rate": 0.008984,
     "nisAmount": 317.58,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-18",
@@ -856,7 +862,7 @@
     "origAmount": 840,
     "rate": 0.008984,
     "nisAmount": 7.55,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-18",
@@ -866,7 +872,7 @@
     "origAmount": 4650,
     "rate": 0.008984,
     "nisAmount": 41.78,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-18",
@@ -876,7 +882,7 @@
     "origAmount": 2400,
     "rate": 0.008984,
     "nisAmount": 21.56,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-18",
@@ -886,7 +892,7 @@
     "origAmount": 26730,
     "rate": 0.008984,
     "nisAmount": 240.14,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-18",
@@ -896,7 +902,7 @@
     "origAmount": 1733,
     "rate": 0.008984,
     "nisAmount": 15.57,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-18",
@@ -906,7 +912,7 @@
     "origAmount": 2800,
     "rate": 0.008984,
     "nisAmount": 25.16,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-17",
@@ -916,7 +922,7 @@
     "origAmount": 1000,
     "rate": 0.008984,
     "nisAmount": 8.98,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-17",
@@ -926,7 +932,7 @@
     "origAmount": 25729,
     "rate": 0.008984,
     "nisAmount": 231.15,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-17",
@@ -936,7 +942,7 @@
     "origAmount": 11500,
     "rate": 0.008984,
     "nisAmount": 103.32,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-17",
@@ -946,7 +952,7 @@
     "origAmount": 8000,
     "rate": 0.008984,
     "nisAmount": 71.87,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-16",
@@ -956,7 +962,7 @@
     "origAmount": 1796,
     "rate": 0.008984,
     "nisAmount": 16.14,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-16",
@@ -966,7 +972,7 @@
     "origAmount": 4832,
     "rate": 0.008984,
     "nisAmount": 43.41,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-15",
@@ -976,7 +982,7 @@
     "origAmount": 2100,
     "rate": 0.008984,
     "nisAmount": 18.87,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-15",
@@ -986,7 +992,7 @@
     "origAmount": 3300,
     "rate": 0.008984,
     "nisAmount": 29.65,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-15",
@@ -996,7 +1002,7 @@
     "origAmount": 6990,
     "rate": 0.008984,
     "nisAmount": 62.8,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-15",
@@ -1006,7 +1012,7 @@
     "origAmount": 1075,
     "rate": 0.008984,
     "nisAmount": 9.66,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-14",
@@ -1016,7 +1022,7 @@
     "origAmount": 1110,
     "rate": 0.008984,
     "nisAmount": 9.97,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-14",
@@ -1026,7 +1032,7 @@
     "origAmount": 12001,
     "rate": 0.008984,
     "nisAmount": 107.82,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-14",
@@ -1036,7 +1042,7 @@
     "origAmount": 8000,
     "rate": 0.008984,
     "nisAmount": 71.87,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-14",
@@ -1046,7 +1052,7 @@
     "origAmount": 8400,
     "rate": 0.008984,
     "nisAmount": 75.47,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-14",
@@ -1056,7 +1062,7 @@
     "origAmount": 1600,
     "rate": 0.008984,
     "nisAmount": 14.37,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-13",
@@ -1066,7 +1072,7 @@
     "origAmount": 340,
     "rate": 0.008984,
     "nisAmount": 3.05,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
   },
   {
     "date": "2026-08-13",
@@ -1076,7 +1082,197 @@
     "origAmount": 17550,
     "rate": 0.008984,
     "nisAmount": 157.67,
-    "source": "Laya Card (9191/1290)"
+    "source": "Laya (9191)"
+  },
+  {
+    "date": "2026-08-23",
+    "desc": "OFFICE SHOES WESTEND",
+    "cat": "קניות וסופרמרקט",
+    "origCurrency": "HUF",
+    "origAmount": 25179,
+    "rate": 0.031487,
+    "nisAmount": 792.81,
+    "source": "Laya (1290)"
+  },
+  {
+    "date": "2026-08-22",
+    "desc": "HELOPAY*REBEL BURGER",
+    "cat": "מסעדות ובתי קפה",
+    "origCurrency": "HUF",
+    "origAmount": 7587,
+    "rate": 0.031487,
+    "nisAmount": 238.89,
+    "source": "Laya (1290)"
+  },
+  {
+    "date": "2026-08-22",
+    "desc": "PB BUDAPEST",
+    "cat": "קניות וסופרמרקט",
+    "origCurrency": "HUF",
+    "origAmount": 5225,
+    "rate": 0.031487,
+    "nisAmount": 164.52,
+    "source": "Laya (1290)"
+  },
+  {
+    "date": "2026-08-22",
+    "desc": "HU SBX BUDAPEST FASHIO",
+    "cat": "מסעדות ובתי קפה",
+    "origCurrency": "HUF",
+    "origAmount": 1690,
+    "rate": 0.031487,
+    "nisAmount": 53.21,
+    "source": "Laya (1290)"
+  },
+  {
+    "date": "2026-08-22",
+    "desc": "Goulash and Langos Ter",
+    "cat": "מסעדות ובתי קפה",
+    "origCurrency": "HUF",
+    "origAmount": 800,
+    "rate": 0.031487,
+    "nisAmount": 25.19,
+    "source": "Laya (1290)"
+  },
+  {
+    "date": "2026-08-22",
+    "desc": "RONI ABC",
+    "cat": "קניות וסופרמרקט",
+    "origCurrency": "HUF",
+    "origAmount": 549,
+    "rate": 0.031487,
+    "nisAmount": 17.29,
+    "source": "Laya (1290)"
+  },
+  {
+    "date": "2026-08-21",
+    "desc": "BERSHKA BUDAPEST",
+    "cat": "קניות וסופרמרקט",
+    "origCurrency": "HUF",
+    "origAmount": 5990,
+    "rate": 0.031487,
+    "nisAmount": 188.61,
+    "source": "Laya (1290)"
+  },
+  {
+    "date": "2026-08-21",
+    "desc": "PRIMARK     846 Budape",
+    "cat": "קניות וסופרמרקט",
+    "origCurrency": "HUF",
+    "origAmount": 11380,
+    "rate": 0.031487,
+    "nisAmount": 358.32,
+    "source": "Laya (1290)"
+  },
+  {
+    "date": "2026-08-21",
+    "desc": "Nyugati Bello",
+    "cat": "מסעדות ובתי קפה",
+    "origCurrency": "HUF",
+    "origAmount": 428,
+    "rate": 0.031487,
+    "nisAmount": 13.48,
+    "source": "Laya (1290)"
+  },
+  {
+    "date": "2026-08-20",
+    "desc": "Madal (Kiraly)",
+    "cat": "מסעדות ובתי קפה",
+    "origCurrency": "HUF",
+    "origAmount": 7865,
+    "rate": 0.031487,
+    "nisAmount": 247.65,
+    "source": "Laya (1290)"
+  },
+  {
+    "date": "2026-08-20",
+    "desc": "HELOPAY*REBEL BURGER",
+    "cat": "מסעדות ובתי קפה",
+    "origCurrency": "HUF",
+    "origAmount": 4090,
+    "rate": 0.031487,
+    "nisAmount": 128.78,
+    "source": "Laya (1290)"
+  },
+  {
+    "date": "2026-08-20",
+    "desc": "Fortissimo Media Kft.",
+    "cat": "אטרקציות ובילויים",
+    "origCurrency": "HUF",
+    "origAmount": 400,
+    "rate": 0.031487,
+    "nisAmount": 12.59,
+    "source": "Laya (1290)"
+  },
+  {
+    "date": "2026-08-19",
+    "desc": "LIDL HU 357 Budapest",
+    "cat": "קניות וסופרמרקט",
+    "origCurrency": "HUF",
+    "origAmount": 9903,
+    "rate": 0.031487,
+    "nisAmount": 311.82,
+    "source": "Laya (1290)"
+  },
+  {
+    "date": "2026-08-19",
+    "desc": "HU SBX BUDAPEST PODMAN",
+    "cat": "מסעדות ובתי קפה",
+    "origCurrency": "HUF",
+    "origAmount": 1090,
+    "rate": 0.031487,
+    "nisAmount": 34.32,
+    "source": "Laya (1290)"
+  },
+  {
+    "date": "2026-08-17",
+    "desc": "SZA'NTO'DRE'V",
+    "cat": "תחבורה, דלק וחניה",
+    "origCurrency": "HUF",
+    "origAmount": 5100,
+    "rate": 0.031487,
+    "nisAmount": 160.58,
+    "source": "Laya (1290)"
+  },
+  {
+    "date": "2026-08-16",
+    "desc": "Sportisimo Keszthely",
+    "cat": "קניות וסופרמרקט",
+    "origCurrency": "HUF",
+    "origAmount": 7490,
+    "rate": 0.031487,
+    "nisAmount": 235.84,
+    "source": "Laya (1290)"
+  },
+  {
+    "date": "2026-08-16",
+    "desc": "Deichmann Keszthely 03",
+    "cat": "קניות וסופרמרקט",
+    "origCurrency": "HUF",
+    "origAmount": 9990,
+    "rate": 0.031487,
+    "nisAmount": 314.56,
+    "source": "Laya (1290)"
+  },
+  {
+    "date": "2026-08-14",
+    "desc": "HELOPAY*BOBO FUN PARK",
+    "cat": "אטרקציות ובילויים",
+    "origCurrency": "HUF",
+    "origAmount": 1600,
+    "rate": 0.031487,
+    "nisAmount": 50.38,
+    "source": "Laya (1290)"
+  },
+  {
+    "date": "2026-08-13",
+    "desc": "DM 351 SZ.",
+    "cat": "קניות וסופרמרקט",
+    "origCurrency": "HUF",
+    "origAmount": 2897,
+    "rate": 0.031487,
+    "nisAmount": 91.22,
+    "source": "Laya (1290)"
   }
 ];
 
@@ -1092,27 +1288,26 @@
   function calculateKPIs() {
     let totalNis = 0;
     let prebookNis = 0;
-    let layaNis = 0;
-    let directNis = 0;
-    let layaHufTotal = 0;
+    let laya9191Nis = 0;
+    let laya1290Nis = 0;
 
     expensesData.forEach(item => {
       totalNis += item.nisAmount;
       if (item.source.includes('הזמנה מראש') || item.source.includes('3893')) {
         prebookNis += item.nisAmount;
-      } else if (item.source.includes('Laya')) {
-        layaNis += item.nisAmount;
-        layaHufTotal += item.origAmount;
+      } else if (item.source.includes('9191')) {
+        laya9191Nis += item.nisAmount;
+      } else if (item.source.includes('1290')) {
+        laya1290Nis += item.nisAmount;
       } else {
-        directNis += item.nisAmount;
+        prebookNis += item.nisAmount;
       }
     });
 
     document.getElementById('total-nis-val').innerText = '₪' + totalNis.toLocaleString('he-IL', {maximumFractionDigits: 2});
     document.getElementById('prebook-nis-val').innerText = '₪' + prebookNis.toLocaleString('he-IL', {maximumFractionDigits: 2});
-    document.getElementById('laya-nis-val').innerText = '₪' + layaNis.toLocaleString('he-IL', {maximumFractionDigits: 2});
-    document.getElementById('laya-huf-sub').innerText = layaHufTotal.toLocaleString() + ' Ft (שער ממוצע 100Ft = 0.90₪)';
-    document.getElementById('direct-nis-val').innerText = '₪' + directNis.toLocaleString('he-IL', {maximumFractionDigits: 2});
+    document.getElementById('laya9191-nis-val').innerText = '₪' + laya9191Nis.toLocaleString('he-IL', {maximumFractionDigits: 2});
+    document.getElementById('laya1290-nis-val').innerText = '₪' + laya1290Nis.toLocaleString('he-IL', {maximumFractionDigits: 2});
   }
 
   function renderCategoryBars() {
@@ -1212,7 +1407,8 @@
       const matchCategory = (selectedCategory === 'all' || i.cat === selectedCategory);
       
       let matchSource = true;
-      if (activeSourceFilter === 'laya') matchSource = i.source.includes('Laya');
+      if (activeSourceFilter === '9191') matchSource = i.source.includes('9191');
+      if (activeSourceFilter === '1290') matchSource = i.source.includes('1290');
       if (activeSourceFilter === 'prebook') matchSource = (i.source.includes('הזמנה מראש') || i.source.includes('3893'));
 
       return matchSearch && matchCategory && matchSource;
@@ -1225,6 +1421,10 @@
       filteredSum += i.nisAmount;
       const badgeClass = getBadgeClass(i.cat);
       const origStr = i.origCurrency === 'NIS' ? '-' : `${i.origAmount.toLocaleString()} ${i.origCurrency}`;
+      
+      let tagHtml = i.source;
+      if (i.source.includes('9191')) tagHtml = `<span class="tag-laya9191">Laya (9191)</span>`;
+      else if (i.source.includes('1290')) tagHtml = `<span class="tag-laya1290">Laya (1290)</span>`;
 
       html += `
         <tr>
@@ -1233,7 +1433,7 @@
           <td><span class="badge ${badgeClass}">${i.cat}</span></td>
           <td>${origStr}</td>
           <td style="font-weight:600;">₪${i.nisAmount.toLocaleString('he-IL', {maximumFractionDigits:2})}</td>
-          <td style="color:var(--text-muted); font-size:0.85rem;">${i.source}</td>
+          <td>${tagHtml}</td>
         </tr>
       `;
     });
