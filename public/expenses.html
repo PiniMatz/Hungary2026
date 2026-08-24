@@ -22,7 +22,13 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { -webkit-text-size-adjust: 100%; }
+    html, body {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      -webkit-text-size-adjust: 100%;
+    }
+
     body {
       font-family: 'Rubik', sans-serif;
       background: #0b1329;
@@ -32,8 +38,10 @@
     }
 
     .container {
+      width: 100%;
       max-width: 1280px;
       margin: 0 auto;
+      overflow: hidden;
     }
 
     /* Header */
@@ -46,6 +54,7 @@
       border-bottom: 1px solid var(--card-border);
       flex-wrap: wrap;
       gap: 1rem;
+      width: 100%;
     }
 
     .title-area h1 {
@@ -55,7 +64,7 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 0.35rem;
-      line-height: 1.2;
+      line-height: 1.25;
     }
 
     .title-area p {
@@ -67,7 +76,6 @@
       display: flex;
       gap: 0.75rem;
       align-items: center;
-      width: auto;
     }
 
     .btn {
@@ -100,6 +108,7 @@
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1rem;
       margin-bottom: 1.5rem;
+      width: 100%;
     }
 
     .kpi-card {
@@ -146,6 +155,7 @@
       grid-template-columns: 1fr 2fr;
       gap: 1.25rem;
       margin-bottom: 1.5rem;
+      width: 100%;
     }
 
     .panel {
@@ -153,6 +163,8 @@
       border: 1px solid var(--card-border);
       border-radius: 14px;
       padding: 1.25rem;
+      width: 100%;
+      overflow: hidden;
     }
 
     .panel-header {
@@ -202,8 +214,9 @@
     .controls {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 0.85rem;
       margin-bottom: 1.25rem;
+      width: 100%;
     }
 
     .filter-group {
@@ -224,17 +237,15 @@
       font-size: 0.9rem;
       min-height: 44px;
       outline: none;
+      width: 100%;
     }
-
-    .search-input { flex: 1; min-width: 160px; }
-    .select-input { min-width: 140px; }
 
     .filter-tabs {
       display: flex;
       gap: 0.4rem;
       width: 100%;
       overflow-x: auto;
-      padding-bottom: 0.25rem;
+      padding-bottom: 0.3rem;
       -webkit-overflow-scrolling: touch;
     }
 
@@ -249,6 +260,8 @@
       cursor: pointer;
       white-space: nowrap;
       min-height: 40px;
+      flex: 1;
+      text-align: center;
       touch-action: manipulation;
     }
 
@@ -258,8 +271,9 @@
       border-color: #2563eb;
     }
 
-    /* Table Container */
+    /* Table Container (Desktop / Tablet) */
     .table-container {
+      width: 100%;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
     }
@@ -278,8 +292,6 @@
       padding: 0.75rem 0.85rem;
       font-weight: 500;
       border-bottom: 1px solid var(--card-border);
-      position: sticky;
-      top: 0;
     }
 
     td {
@@ -309,6 +321,67 @@
     .tag-laya9191 { background: rgba(251, 191, 36, 0.2); color: #fbbf24; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight:600; font-size: 0.78rem; }
     .tag-laya1290 { background: rgba(251, 113, 133, 0.2); color: #fb7185; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight:600; font-size: 0.78rem; }
 
+    /* Mobile Cards View (Hidden on Desktop, Visible on Mobile) */
+    .mobile-cards-list {
+      display: none;
+      flex-direction: column;
+      gap: 0.75rem;
+      width: 100%;
+    }
+
+    .m-card {
+      background: #0f172a;
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      width: 100%;
+    }
+
+    .m-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .m-card-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      line-height: 1.3;
+      color: #fff;
+    }
+
+    .m-card-price {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--accent-blue);
+      white-space: nowrap;
+    }
+
+    .m-card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.2rem;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .m-card-tags {
+      display: flex;
+      gap: 0.35rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .m-card-sub {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
     .summary-bar {
       margin-top: 1rem;
       padding: 0.75rem 1rem;
@@ -320,70 +393,41 @@
       font-size: 0.9rem;
       flex-wrap: wrap;
       gap: 0.5rem;
+      width: 100%;
     }
 
-    /* Mobile Responsive Optimizations (< 768px) */
-    @media (max-width: 768px) {
-      body { padding: 0.75rem; }
+    /* Mobile Media Queries (< 640px) */
+    @media (max-width: 640px) {
+      body { padding: 0.6rem; }
       
       header {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
         gap: 0.75rem;
       }
-      
-      .header-actions {
-        width: 100%;
-      }
 
-      .btn {
-        width: 100%;
-      }
+      .btn { width: 100%; }
 
-      .title-area h1 {
-        font-size: 1.45rem;
-      }
+      .title-area h1 { font-size: 1.35rem; }
 
       .kpi-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         gap: 0.75rem;
       }
 
-      .kpi-card {
-        padding: 1rem;
-      }
-
-      .kpi-value {
-        font-size: 1.35rem;
-      }
+      .kpi-card { padding: 0.9rem; }
+      .kpi-value { font-size: 1.4rem; }
 
       .dashboard-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
       }
 
-      .panel {
-        padding: 1rem;
-      }
+      .panel { padding: 0.85rem; }
 
-      .filter-group {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .search-input, .select-input {
-        width: 100%;
-      }
-
-      /* Card view on extra narrow screens for expenses table */
-      table { font-size: 0.825rem; }
-      th, td { padding: 0.6rem 0.5rem; }
-    }
-
-    @media (max-width: 480px) {
-      .kpi-grid {
-        grid-template-columns: 1fr;
-      }
+      /* Hide traditional wide table on phones, show mobile card list */
+      .desktop-table { display: none; }
+      .mobile-cards-list { display: flex; }
     }
 
     @media print {
@@ -391,6 +435,8 @@
       .panel, .kpi-card { background: #fff; border: 1px solid #ccc; color: #000; }
       .search-input, .select-input, .filter-tabs, .btn { display: none; }
       .title-area h1 { background: none; -webkit-text-fill-color: #000; }
+      .desktop-table { display: table !important; }
+      .mobile-cards-list { display: none !important; }
       th { background: #f1f5f9; color: #000; }
       td { border-bottom: 1px solid #ddd; }
     }
@@ -450,7 +496,9 @@
       <div class="panel-header">
         <span>פירוט הזמנות מרכזיות (Pre-booked)</span>
       </div>
-      <div class="table-container">
+      
+      <!-- Desktop Table -->
+      <div class="table-container desktop-table">
         <table>
           <thead>
             <tr>
@@ -465,6 +513,9 @@
           <tbody id="prebook-table-body"></tbody>
         </table>
       </div>
+
+      <!-- Mobile Prebook List -->
+      <div class="mobile-cards-list" id="mobile-prebook-list"></div>
     </div>
   </div>
 
@@ -474,6 +525,7 @@
       <div class="panel-header" style="margin-bottom:0;">
         <span>פירוט כלל ההוצאות והרכישות היומיות</span>
       </div>
+      
       <div class="filter-group">
         <select id="category-filter" class="select-input" onchange="renderTable()">
           <option value="all">כל הקטגוריות</option>
@@ -490,17 +542,18 @@
         </select>
 
         <input type="text" id="search-box" class="search-input" placeholder="חפש בית עסק..." oninput="renderTable()">
-        
-        <div class="filter-tabs">
-          <button class="tab-btn active" onclick="setSourceFilter('all', this)">הכל</button>
-          <button class="tab-btn" onclick="setSourceFilter('9191', this)">Laya 9191</button>
-          <button class="tab-btn" onclick="setSourceFilter('1290', this)">Laya 1290</button>
-          <button class="tab-btn" onclick="setSourceFilter('prebook', this)">הזמנות מראש</button>
-        </div>
+      </div>
+
+      <div class="filter-tabs">
+        <button class="tab-btn active" onclick="setSourceFilter('all', this)">הכל</button>
+        <button class="tab-btn" onclick="setSourceFilter('9191', this)">Laya 9191</button>
+        <button class="tab-btn" onclick="setSourceFilter('1290', this)">Laya 1290</button>
+        <button class="tab-btn" onclick="setSourceFilter('prebook', this)">הזמנות מראש</button>
       </div>
     </div>
 
-    <div class="table-container">
+    <!-- Desktop Expenses Table -->
+    <div class="table-container desktop-table">
       <table>
         <thead>
           <tr>
@@ -515,6 +568,9 @@
         <tbody id="expenses-table-body"></tbody>
       </table>
     </div>
+
+    <!-- Mobile Cards Expenses List -->
+    <div class="mobile-cards-list" id="mobile-expenses-list"></div>
 
     <div class="summary-bar">
       <span id="filtered-count">מציג 0 פריטים</span>
@@ -1444,12 +1500,14 @@
 
   function renderPrebookTable() {
     const prebookItems = expensesData.filter(i => i.source.includes('הזמנה מראש') || i.source.includes('3893'));
-    let html = '';
+    let desktopHtml = '';
+    let mobileHtml = '';
 
     prebookItems.forEach(i => {
       const badgeClass = getBadgeClass(i.cat);
       const origSymbol = i.origCurrency === 'EUR' ? '€' : i.origCurrency === 'HUF' ? 'Ft' : i.origCurrency === 'USD' ? '$' : '₪';
-      html += `
+      
+      desktopHtml += `
         <tr>
           <td style="font-weight:600;">${i.desc}</td>
           <td><span class="badge ${badgeClass}">${i.cat}</span></td>
@@ -1459,9 +1517,23 @@
           <td style="font-weight:600; color:var(--accent-blue);">₪${i.nisAmount.toLocaleString('he-IL', {maximumFractionDigits:2})}</td>
         </tr>
       `;
+
+      mobileHtml += `
+        <div class="m-card">
+          <div class="m-card-header">
+            <span class="m-card-title">${i.desc}</span>
+            <span class="m-card-price">₪${i.nisAmount.toLocaleString('he-IL', {maximumFractionDigits:2})}</span>
+          </div>
+          <div class="m-card-meta">
+            <span class="badge ${badgeClass}">${i.cat}</span>
+            <span class="m-card-sub">${origSymbol}${i.origAmount.toLocaleString()} ${i.origCurrency}</span>
+          </div>
+        </div>
+      `;
     });
 
-    document.getElementById('prebook-table-body').innerHTML = html;
+    document.getElementById('prebook-table-body').innerHTML = desktopHtml;
+    document.getElementById('mobile-prebook-list').innerHTML = mobileHtml;
   }
 
   function getBadgeClass(cat) {
@@ -1500,7 +1572,8 @@
       return matchSearch && matchCategory && matchSource;
     });
 
-    let html = '';
+    let desktopHtml = '';
+    let mobileHtml = '';
     let filteredSum = 0;
 
     filtered.forEach(i => {
@@ -1512,7 +1585,7 @@
       if (i.source.includes('9191')) tagHtml = `<span class="tag-laya9191">Laya (9191)</span>`;
       else if (i.source.includes('1290')) tagHtml = `<span class="tag-laya1290">Laya (1290)</span>`;
 
-      html += `
+      desktopHtml += `
         <tr>
           <td>${i.date}</td>
           <td style="font-weight:500;">${i.desc}</td>
@@ -1522,9 +1595,27 @@
           <td>${tagHtml}</td>
         </tr>
       `;
+
+      mobileHtml += `
+        <div class="m-card">
+          <div class="m-card-header">
+            <span class="m-card-title">${i.desc}</span>
+            <span class="m-card-price">₪${i.nisAmount.toLocaleString('he-IL', {maximumFractionDigits:2})}</span>
+          </div>
+          <div class="m-card-meta">
+            <div class="m-card-tags">
+              <span class="badge ${badgeClass}">${i.cat}</span>
+              ${tagHtml}
+            </div>
+            <span class="m-card-sub">${i.date} ${origStr !== '-' ? '| ' + origStr : ''}</span>
+          </div>
+        </div>
+      `;
     });
 
-    document.getElementById('expenses-table-body').innerHTML = html;
+    document.getElementById('expenses-table-body').innerHTML = desktopHtml;
+    document.getElementById('mobile-expenses-list').innerHTML = mobileHtml;
+
     document.getElementById('filtered-count').innerText = `מציג ${filtered.length} פריטים`;
     document.getElementById('filtered-total').innerText = `סה"כ מסונן: ₪${filteredSum.toLocaleString('he-IL', {maximumFractionDigits:2})}`;
   }
