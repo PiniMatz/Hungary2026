@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>סיכום הוצאות חופשה הונגריה - אוגוסט 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      --card-bg: #1e293b;
+      --card-border: #334155;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-blue: #38bdf8;
+      --accent-green: #4ade80;
+      --accent-amber: #fbbf24;
+      --accent-purple: #c084fc;
+      --accent-rose: #fb7185;
+      --badge-bg: rgba(56, 189, 248, 0.1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Rubik', sans-serif;
+      background: #0b1329;
+      color: var(--text-main);
+      padding: 2rem;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--card-border);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .title-area h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #38bdf8, #818cf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .title-area p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn {
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      font-family: inherit;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+    }
+
+    /* KPI Grid */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .kpi-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .kpi-card::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0; left: 0; height: 4px;
+    }
+
+    .kpi-total::before { background: var(--accent-blue); }
+    .kpi-prebook::before { background: var(--accent-purple); }
+    .kpi-laya::before { background: var(--accent-amber); }
+    .kpi-direct::before { background: var(--accent-green); }
+
+    .kpi-title {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .kpi-value {
+      font-size: 1.875rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .kpi-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Charts & Breakdowns */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 900px) {
+      .dashboard-grid { grid-template-columns: 1fr; }
+    }
+
+    .panel {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 1.5rem;
+    }
+
+    .panel-header {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Category List */
+    .category-item {
+      margin-bottom: 1rem;
+      cursor: pointer;
+      padding: 0.4rem;
+      border-radius: 8px;
+      transition: background 0.2s ease;
+    }
+
+    .category-item:hover {
+      background: rgba(255,255,255,0.04);
+    }
+
+    .cat-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .cat-bar-bg {
+      background: #0f172a;
+      height: 8px;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .cat-bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.4s ease;
+    }
+
+    /* Filters & Controls */
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-group {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .search-input, .select-input {
+      background: #0f172a;
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.9rem;
+    }
+
+    .search-input { width: 220px; }
+    .select-input { cursor: pointer; }
+
+    .filter-tabs {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .tab-btn {
+      background: #0f172a;
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    .tab-btn.active {
+      background: #2563eb;
+      color: #fff;
+      border-color: #2563eb;
+    }
+
+    /* Table */
+    .table-container {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: right;
+      font-size: 0.9rem;
+    }
+
+    th {
+      background: #0f172a;
+      color: var(--text-muted);
+      padding: 0.75rem 1rem;
+      font-weight: 500;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    tr:hover td {
+      background: rgba(255,255,255,0.02);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    .badge-hotel { background: rgba(192, 132, 252, 0.15); color: #c084fc; }
+    .badge-food { background: rgba(251, 113, 133, 0.15); color: #fb7185; }
+    .badge-attraction { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
+    .badge-transport { background: rgba(74, 222, 128, 0.15); color: #4ade80; }
+    .badge-shop { background: rgba(251, 191, 36, 0.15); color: #fbbf24; }
+    .badge-insurance { background: rgba(167, 139, 250, 0.15); color: #a78bfa; }
+    .badge-other { background: rgba(148, 163, 184, 0.15); color: #94a3b8; }
+
+    .summary-bar {
+      margin-top: 1rem;
+      padding: 0.75rem 1rem;
+      background: #0f172a;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    @media print {
+      body { background: #fff; color: #000; padding: 0; }
+      .panel, .kpi-card { background: #fff; border: 1px solid #ccc; color: #000; }
+      .search-input, .select-input, .filter-tabs, .btn { display: none; }
+      .title-area h1 { background: none; -webkit-text-fill-color: #000; }
+      th { background: #f1f5f9; color: #000; }
+      td { border-bottom: 1px solid #ddd; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="title-area">
+      <h1>🇭🇺 דוח סיכום הוצאות חופשה הונגריה</h1>
+      <p>תאריכים: 13.08.2026 – 23.08.2026 | בודפשט ואזור אגם בלטון</p>
+    </div>
+    <div class="header-actions">
+      <button class="btn" onclick="window.print()">🖨️ הדפס / שמור כ-PDF</button>
+    </div>
+  </header>
+
+  <!-- KPI Grid -->
+  <div class="kpi-grid">
+    <div class="kpi-card kpi-total">
+      <div class="kpi-title">סה"כ הוצאות כולל (ש"ח)</div>
+      <div class="kpi-value" id="total-nis-val">₪0</div>
+      <div class="kpi-sub">כולל מלונות, רכב, טיסות ויומיות</div>
+    </div>
+    <div class="kpi-card kpi-prebook">
+      <div class="kpi-title">הזמנות מראש (ש"ח)</div>
+      <div class="kpi-value" id="prebook-nis-val">₪0</div>
+      <div class="kpi-sub">Kolping, AVIS, 7Seasons, ביטוח</div>
+    </div>
+    <div class="kpi-card kpi-laya">
+      <div class="kpi-title">הוצאות שוטפות Laya (ש"ח)</div>
+      <div class="kpi-value" id="laya-nis-val">₪0</div>
+      <div class="kpi-sub" id="laya-huf-sub">512,187 Ft בסך הכל</div>
+    </div>
+    <div class="kpi-card kpi-direct">
+      <div class="kpi-title">תחבורה, סיורים ורומינג (ש"ח)</div>
+      <div class="kpi-value" id="direct-nis-val">₪0</div>
+      <div class="kpi-sub">SIM World8, סיורים, Deak F</div>
+    </div>
+  </div>
+
+  <!-- Dashboard Grid -->
+  <div class="dashboard-grid">
+    <!-- Panel 1: Categories -->
+    <div class="panel">
+      <div class="panel-header">
+        <span>חלוקה לפי קטגוריות</span>
+        <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted);">(לחץ לסינון)</span>
+      </div>
+      <div id="category-bars"></div>
+    </div>
+
+    <!-- Panel 2: Major Pre-booked breakdown -->
+    <div class="panel">
+      <div class="panel-header">
+        <span>פירוט הזמנות מרכזיות (Pre-booked)</span>
+      </div>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>פריט / ספק</th>
+              <th>קטגוריה</th>
+              <th>מטבע מקור</th>
+              <th>סכום במקור</th>
+              <th>שער המרה</th>
+              <th>סכום בש"ח</th>
+            </tr>
+          </thead>
+          <tbody id="prebook-table-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel 3: Detailed Expenses Table -->
+  <div class="panel" id="table-panel">
+    <div class="controls">
+      <div class="panel-header" style="margin-bottom:0;">
+        <span>פירוט כלל ההוצאות והרכישות היומיות</span>
+      </div>
+      <div class="filter-group">
+        <select id="category-filter" class="select-input" onchange="renderTable()">
+          <option value="all">כל הקטגוריות</option>
+          <option value="מלונות ואירוח">מלונות ואירוח</option>
+          <option value="תחבורה, דלק וחניה">תחבורה, דלק וחניה</option>
+          <option value="מסעדות ובתי קפה">מסעדות ובתי קפה</option>
+          <option value="אטרקציות ובילויים">אטרקציות ובילויים</option>
+          <option value="קניות וסופרמרקט">קניות וסופרמרקט</option>
+          <option value="ביטוח ורומינג">ביטוח ורומינג</option>
+          <option value="שונות">שונות</option>
+        </select>
+
+        <input type="text" id="search-box" class="search-input" placeholder="חפש בית עסק..." oninput="renderTable()">
+        
+        <div class="filter-tabs">
+          <button class="tab-btn active" onclick="setSourceFilter('all', this)">הכל</button>
+          <button class="tab-btn" onclick="setSourceFilter('laya', this)">Laya בלבד</button>
+          <button class="tab-btn" onclick="setSourceFilter('prebook', this)">הזמנות מראש</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>תאריך</th>
+            <th>בית עסק / תיאור</th>
+            <th>קטגוריה</th>
+            <th>סכום במקור</th>
+            <th>סכום בש"ח</th>
+            <th>אמצעי תשלום / מקור</th>
+          </tr>
+        </thead>
+        <tbody id="expenses-table-body"></tbody>
+      </table>
+    </div>
+
+    <div class="summary-bar">
+      <span id="filtered-count">מציג 0 פריטים</span>
+      <span id="filtered-total">סה"כ מסונן: ₪0</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const expensesData = [
+  {
+    "date": "Pre-booked",
+    "desc": "Kolping Hotel (Reservation)",
+    "cat": "מלונות ואירוח",
+    "origCurrency": "EUR",
+    "origAmount": 2688,
+    "rate": 4.05,
+    "nisAmount": 10886.4,
+    "source": "הזמנה מראש (יורו)"
+  },
+  {
+    "date": "Pre-booked",
+    "desc": "AVIS Car Rental",
+    "cat": "תחבורה, דלק וחניה",
+    "origCurrency": "EUR",
+    "origAmount": 593.99,
+    "rate": 4.05,
+    "nisAmount": 2405.66,
+    "source": "הזמנה מראש (יורו)"
+  },
+  {
+    "date": "Pre-booked",
+    "desc": "7Seasons Apartment Hotel",
+    "cat": "מלונות ואירוח",
+    "origCurrency": "HUF",
+    "origAmount": 469659,
+    "rate": 0.008984,
+    "nisAmount": 4219.42,
+    "source": "הזמנה מראש (פורינט)"
+  },
+  {
+    "date": "2026-05-23",
+    "desc": "CarRentals Insurance (RENTALCOVER.COM)",
+    "cat": "ביטוח ורומינג",
+    "origCurrency": "USD",
+    "origAmount": 54.89,
+    "rate": 2.936,
+    "nisAmount": 161.16,
+    "source": "מקס (3893)"
+  },
+  {
+    "date": "2026-08-19",
+    "desc": "WORLD 8 (SIM / Roaming)",
+    "cat": "ביטוח ורומינג",
+    "origCurrency": "NIS",
+    "origAmount": 99,
+    "rate": 1,
+    "nisAmount": 99,
+    "source": "כרטיס (1290/9191)"
+  },
+  {
+    "date": "2026-08-20",
+    "desc": "SIMPLEP BUDAPESTGO A (תחבורה ציבורית)",
+    "cat": "תחבורה, דלק וחניה",
+    "origCurrency": "NIS",
+    "origAmount": 19,
+    "rate": 1,
+    "nisAmount": 19,
+    "source": "ישראכרט (9191)"
+  },
+  {
+    "date": "2026-08-22",
+    "desc": "ALLGO GUIDED TOURS B (סיורים מודרכים)",
+    "cat": "אטרקציות ובילויים",
+    "origCurrency": "NIS",
+    "origAmount": 191.73,
+    "rate": 1,
+    "nisAmount": 191.73,
+    "source": "ישראכרט (9191)"
+  },
+  {
+    "date": "2026-08-23",
+    "desc": "MOH Sky HUF",
+    "cat": "תחבורה, דלק וחניה",
+    "origCurrency": "HUF",
+    "origAmount": 569,
+    "rate": 0.008984,
+    "nisAmount": 5.11,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-23",
+    "desc": "WH Smith Hungary",
+    "cat": "קניות וסופרמרקט",
+    "origCurrency": "HUF",
+    "origAmount": 3980,
+    "rate": 0.008984,
+    "nisAmount": 35.76,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-23",
+    "desc": "Rebel Burger - Kiosk",
+    "cat": "מסעדות ובתי קפה",
+    "origCurrency": "HUF",
+    "origAmount": 14860,
+    "rate": 0.008984,
+    "nisAmount": 133.5,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-23",
+    "desc": "HELOPAY*ILLUZIOK MUZEU",
+    "cat": "אטרקציות ובילויים",
+    "origCurrency": "HUF",
+    "origAmount": 17100,
+    "rate": 0.008984,
+    "nisAmount": 153.63,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-23",
+    "desc": "Joy Mode Noi Divataru",
+    "cat": "קניות וסופרמרקט",
+    "origCurrency": "HUF",
+    "origAmount": 18000,
+    "rate": 0.008984,
+    "nisAmount": 161.71,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-22",
+    "desc": "Rebel Burger - Kiosk",
+    "cat": "מסעדות ובתי קפה",
+    "origCurrency": "HUF",
+    "origAmount": 8470,
+    "rate": 0.008984,
+    "nisAmount": 76.09,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-22",
+    "desc": "Flipperm@zeum",
+    "cat": "אטרקציות ובילויים",
+    "origCurrency": "HUF",
+    "origAmount": 9500,
+    "rate": 0.008984,
+    "nisAmount": 85.35,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-22",
+    "desc": "CANDYS SHOP KFT",
+    "cat": "מסעדות ובתי קפה",
+    "origCurrency": "HUF",
+    "origAmount": 3000,
+    "rate": 0.008984,
+    "nisAmount": 26.95,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-22",
+    "desc": "Kurtoskalacs Sutode",
+    "cat": "מסעדות ובתי קפה",
+    "origCurrency": "HUF",
+    "origAmount": 2300,
+    "rate": 0.008984,
+    "nisAmount": 20.66,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-22",
+    "desc": "MAGYAR ZENE HA'ZA",
+    "cat": "אטרקציות ובילויים",
+    "origCurrency": "HUF",
+    "origAmount": 6400,
+    "rate": 0.008984,
+    "nisAmount": 57.5,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-21",
+    "desc": "HALFPRICE 4056 BUDAPES",
+    "cat": "קניות וסופרמרקט",
+    "origCurrency": "HUF",
+    "origAmount": 32560,
+    "rate": 0.008984,
+    "nisAmount": 292.52,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-21",
+    "desc": "ANNA CAFE VA'CI U.",
+    "cat": "מסעדות ובתי קפה",
+    "origCurrency": "HUF",
+    "origAmount": 9166,
+    "rate": 0.008984,
+    "nisAmount": 82.35,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-21",
+    "desc": "LIPO'TI PE'KSE'G",
+    "cat": "שונות",
+    "origCurrency": "HUF",
+    "origAmount": 400,
+    "rate": 0.008984,
+    "nisAmount": 3.59,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-21",
+    "desc": "TESCO 41014 O:NKISZOLG",
+    "cat": "קניות וסופרמרקט",
+    "origCurrency": "HUF",
+    "origAmount": 3203,
+    "rate": 0.008984,
+    "nisAmount": 28.78,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-21",
+    "desc": "The Magic Budapest",
+    "cat": "אטרקציות ובילויים",
+    "origCurrency": "HUF",
+    "origAmount": 33011,
+    "rate": 0.008984,
+    "nisAmount": 296.57,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-21",
+    "desc": "LockedServicesKft",
+    "cat": "אטרקציות ובילויים",
+    "origCurrency": "HUF",
+    "origAmount": 30950,
+    "rate": 0.008984,
+    "nisAmount": 278.05,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-20",
+    "desc": "MU",
+    "cat": "שונות",
+    "origCurrency": "HUF",
+    "origAmount": 4500,
+    "rate": 0.008984,
+    "nisAmount": 40.43,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-20",
+    "desc": "SIMPLEP*DEA'K F",
+    "cat": "תחבורה, דלק וחניה",
+    "origCurrency": "HUF",
+    "origAmount": 6900,
+    "rate": 0.008984,
+    "nisAmount": 61.99,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-20",
+    "desc": "Kurtissimo",
+    "cat": "מסעדות ובתי קפה",
+    "origCurrency": "HUF",
+    "origAmount": 3500,
+    "rate": 0.008984,
+    "nisAmount": 31.44,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-20",
+    "desc": "F@ti K@zm@ves S@rf@zde",
+    "cat": "שונות",
+    "origCurrency": "HUF",
+    "origAmount": 2400,
+    "rate": 0.008984,
+    "nisAmount": 21.56,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-20",
+    "desc": "HORVATH VIVIEN KFT.",
+    "cat": "מסעדות ובתי קפה",
+    "origCurrency": "HUF",
+    "origAmount": 10900,
+    "rate": 0.008984,
+    "nisAmount": 97.93,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-20",
+    "desc": "Fekete",
+    "cat": "מסעדות ובתי קפה",
+    "origCurrency": "HUF",
+    "origAmount": 6820,
+    "rate": 0.008984,
+    "nisAmount": 61.27,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-20",
+    "desc": "Pedro Pekseg Kitelepul",
+    "cat": "מסעדות ובתי קפה",
+    "origCurrency": "HUF",
+    "origAmount": 3700,
+    "rate": 0.008984,
+    "nisAmount": 33.24,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-19",
+    "desc": "GELARTO ROSA GRANDE",
+    "cat": "מסעדות ובתי קפה",
+    "origCurrency": "HUF",
+    "origAmount": 5400,
+    "rate": 0.008984,
+    "nisAmount": 48.51,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-19",
+    "desc": "BUDAPEST O'RIA'SKEREKE",
+    "cat": "שונות",
+    "origCurrency": "HUF",
+    "origAmount": 17600,
+    "rate": 0.008984,
+    "nisAmount": 158.12,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-19",
+    "desc": "SIMONS BURGER ARANY",
+    "cat": "מסעדות ובתי קפה",
+    "origCurrency": "HUF",
+    "origAmount": 7337,
+    "rate": 0.008984,
+    "nisAmount": 65.92,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-19",
+    "desc": "Orlen HU",
+    "cat": "תחבורה, דלק וחניה",
+    "origCurrency": "HUF",
+    "origAmount": 8788,
+    "rate": 0.008984,
+    "nisAmount": 78.95,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-19",
+    "desc": "STOP OIL BENZINKUT",
+    "cat": "תחבורה, דלק וחניה",
+    "origCurrency": "HUF",
+    "origAmount": 3390,
+    "rate": 0.008984,
+    "nisAmount": 30.46,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-19",
+    "desc": "BALATONI BOB AUTOMATA",
+    "cat": "אטרקציות ובילויים",
+    "origCurrency": "HUF",
+    "origAmount": 2598,
+    "rate": 0.008984,
+    "nisAmount": 23.34,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-19",
+    "desc": "BALATONI BOB AUTOMATA",
+    "cat": "אטרקציות ובילויים",
+    "origCurrency": "HUF",
+    "origAmount": 6999,
+    "rate": 0.008984,
+    "nisAmount": 62.88,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-19",
+    "desc": "BALATONI BOB",
+    "cat": "אטרקציות ובילויים",
+    "origCurrency": "HUF",
+    "origAmount": 8194,
+    "rate": 0.008984,
+    "nisAmount": 73.61,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-19",
+    "desc": "MOL 35212 sz. toltoall",
+    "cat": "תחבורה, דלק וחניה",
+    "origCurrency": "HUF",
+    "origAmount": 29866,
+    "rate": 0.008984,
+    "nisAmount": 268.32,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-19",
+    "desc": "KOLPING HOTEL",
+    "cat": "מלונות ואירוח",
+    "origCurrency": "HUF",
+    "origAmount": 35350,
+    "rate": 0.008984,
+    "nisAmount": 317.58,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-18",
+    "desc": "MOZSO-MARIS KFT",
+    "cat": "מסעדות ובתי קפה",
+    "origCurrency": "HUF",
+    "origAmount": 840,
+    "rate": 0.008984,
+    "nisAmount": 7.55,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-18",
+    "desc": "MOZSO-MARIS Kft.",
+    "cat": "מסעדות ובתי קפה",
+    "origCurrency": "HUF",
+    "origAmount": 4650,
+    "rate": 0.008984,
+    "nisAmount": 41.78,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-18",
+    "desc": "BERE'NYI FOGADO'",
+    "cat": "מסעדות ובתי קפה",
+    "origCurrency": "HUF",
+    "origAmount": 2400,
+    "rate": 0.008984,
+    "nisAmount": 21.56,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-18",
+    "desc": "ZKF",
+    "cat": "שונות",
+    "origCurrency": "HUF",
+    "origAmount": 26730,
+    "rate": 0.008984,
+    "nisAmount": 240.14,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-18",
+    "desc": "PARKOLO'AUTOMATA 4.",
+    "cat": "תחבורה, דלק וחניה",
+    "origCurrency": "HUF",
+    "origAmount": 1733,
+    "rate": 0.008984,
+    "nisAmount": 15.57,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-18",
+    "desc": "HELOPAY*BOBO FUN PARK",
+    "cat": "אטרקציות ובילויים",
+    "origCurrency": "HUF",
+    "origAmount": 2800,
+    "rate": 0.008984,
+    "nisAmount": 25.16,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-17",
+    "desc": "FOGAS PARKOLO'",
+    "cat": "תחבורה, דלק וחניה",
+    "origCurrency": "HUF",
+    "origAmount": 1000,
+    "rate": 0.008984,
+    "nisAmount": 8.98,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-17",
+    "desc": "Villa Pisky",
+    "cat": "אטרקציות ובילויים",
+    "origCurrency": "HUF",
+    "origAmount": 25729,
+    "rate": 0.008984,
+    "nisAmount": 231.15,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-17",
+    "desc": "HELOPAY*BELLA ALLATP S",
+    "cat": "אטרקציות ובילויים",
+    "origCurrency": "HUF",
+    "origAmount": 11500,
+    "rate": 0.008984,
+    "nisAmount": 103.32,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-17",
+    "desc": "FORDI'TOTT HA'Z",
+    "cat": "אטרקציות ובילויים",
+    "origCurrency": "HUF",
+    "origAmount": 8000,
+    "rate": 0.008984,
+    "nisAmount": 71.87,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-16",
+    "desc": "SPAR 5250",
+    "cat": "קניות וסופרמרקט",
+    "origCurrency": "HUF",
+    "origAmount": 1796,
+    "rate": 0.008984,
+    "nisAmount": 16.14,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-16",
+    "desc": "SPAR 5250",
+    "cat": "קניות וסופרמרקט",
+    "origCurrency": "HUF",
+    "origAmount": 4832,
+    "rate": 0.008984,
+    "nisAmount": 43.41,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-15",
+    "desc": "BOBO' KA'VE'ZO'",
+    "cat": "מסעדות ובתי קפה",
+    "origCurrency": "HUF",
+    "origAmount": 2100,
+    "rate": 0.008984,
+    "nisAmount": 18.87,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-15",
+    "desc": "KU:RTO:S CAFFE'",
+    "cat": "מסעדות ובתי קפה",
+    "origCurrency": "HUF",
+    "origAmount": 3300,
+    "rate": 0.008984,
+    "nisAmount": 29.65,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-15",
+    "desc": "Vulkan Cafe & Bar",
+    "cat": "מסעדות ובתי קפה",
+    "origCurrency": "HUF",
+    "origAmount": 6990,
+    "rate": 0.008984,
+    "nisAmount": 62.8,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-15",
+    "desc": "PARKOLA'S KISFALUDY",
+    "cat": "תחבורה, דלק וחניה",
+    "origCurrency": "HUF",
+    "origAmount": 1075,
+    "rate": 0.008984,
+    "nisAmount": 9.66,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-14",
+    "desc": "HE'VI'Z VA'ROS O:NKORM",
+    "cat": "תחבורה, דלק וחניה",
+    "origCurrency": "HUF",
+    "origAmount": 1110,
+    "rate": 0.008984,
+    "nisAmount": 9.97,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-14",
+    "desc": "HELOPAY*PARASZTUDVAR",
+    "cat": "אטרקציות ובילויים",
+    "origCurrency": "HUF",
+    "origAmount": 12001,
+    "rate": 0.008984,
+    "nisAmount": 107.82,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-14",
+    "desc": "SEGAWORLD KERESKEDELMI",
+    "cat": "אטרקציות ובילויים",
+    "origCurrency": "HUF",
+    "origAmount": 8000,
+    "rate": 0.008984,
+    "nisAmount": 71.87,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-14",
+    "desc": "HELOPAY*BOBO FUN PARK",
+    "cat": "אטרקציות ובילויים",
+    "origCurrency": "HUF",
+    "origAmount": 8400,
+    "rate": 0.008984,
+    "nisAmount": 75.47,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-14",
+    "desc": "HELOPAY*BOBO FUN PARK",
+    "cat": "אטרקציות ובילויים",
+    "origCurrency": "HUF",
+    "origAmount": 1600,
+    "rate": 0.008984,
+    "nisAmount": 14.37,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-13",
+    "desc": "NYX*AloisDallmayrAutom",
+    "cat": "מסעדות ובתי קפה",
+    "origCurrency": "HUF",
+    "origAmount": 340,
+    "rate": 0.008984,
+    "nisAmount": 3.05,
+    "source": "Laya Card (9191/1290)"
+  },
+  {
+    "date": "2026-08-13",
+    "desc": "Chimichanga Etterem",
+    "cat": "מסעדות ובתי קפה",
+    "origCurrency": "HUF",
+    "origAmount": 17550,
+    "rate": 0.008984,
+    "nisAmount": 157.67,
+    "source": "Laya Card (9191/1290)"
+  }
+];
+
+  let activeSourceFilter = 'all';
+
+  function init() {
+    calculateKPIs();
+    renderCategoryBars();
+    renderPrebookTable();
+    renderTable();
+  }
+
+  function calculateKPIs() {
+    let totalNis = 0;
+    let prebookNis = 0;
+    let layaNis = 0;
+    let directNis = 0;
+    let layaHufTotal = 0;
+
+    expensesData.forEach(item => {
+      totalNis += item.nisAmount;
+      if (item.source.includes('הזמנה מראש') || item.source.includes('3893')) {
+        prebookNis += item.nisAmount;
+      } else if (item.source.includes('Laya')) {
+        layaNis += item.nisAmount;
+        layaHufTotal += item.origAmount;
+      } else {
+        directNis += item.nisAmount;
+      }
+    });
+
+    document.getElementById('total-nis-val').innerText = '₪' + totalNis.toLocaleString('he-IL', {maximumFractionDigits: 2});
+    document.getElementById('prebook-nis-val').innerText = '₪' + prebookNis.toLocaleString('he-IL', {maximumFractionDigits: 2});
+    document.getElementById('laya-nis-val').innerText = '₪' + layaNis.toLocaleString('he-IL', {maximumFractionDigits: 2});
+    document.getElementById('laya-huf-sub').innerText = layaHufTotal.toLocaleString() + ' Ft (שער ממוצע 100Ft = 0.90₪)';
+    document.getElementById('direct-nis-val').innerText = '₪' + directNis.toLocaleString('he-IL', {maximumFractionDigits: 2});
+  }
+
+  function renderCategoryBars() {
+    const cats = {};
+    let totalNis = 0;
+
+    expensesData.forEach(item => {
+      cats[item.cat] = (cats[item.cat] || 0) + item.nisAmount;
+      totalNis += item.nisAmount;
+    });
+
+    const colors = {
+      'מלונות ואירוח': '#c084fc',
+      'תחבורה, דלק וחניה': '#4ade80',
+      'מסעדות ובתי קפה': '#fb7185',
+      'אטרקציות ובילויים': '#38bdf8',
+      'קניות וסופרמרקט': '#fbbf24',
+      'ביטוח ורומינג': '#a78bfa',
+      'שונות': '#94a3b8'
+    };
+
+    let html = '';
+    Object.keys(cats).sort((a,b) => cats[b] - cats[a]).forEach(cat => {
+      const amount = cats[cat];
+      const pct = ((amount / totalNis) * 100).toFixed(1);
+      const color = colors[cat] || '#38bdf8';
+
+      html += `
+        <div class="category-item" onclick="filterByCategory('${cat}')" title="לחץ לסינון הטבלה לפי ${cat}">
+          <div class="cat-meta">
+            <span>${cat}</span>
+            <span style="font-weight:600;">₪${amount.toLocaleString('he-IL', {maximumFractionDigits:0})} (${pct}%)</span>
+          </div>
+          <div class="cat-bar-bg">
+            <div class="cat-bar-fill" style="width: ${pct}%; background: ${color};"></div>
+          </div>
+        </div>
+      `;
+    });
+
+    document.getElementById('category-bars').innerHTML = html;
+  }
+
+  function filterByCategory(catName) {
+    document.getElementById('category-filter').value = catName;
+    renderTable();
+    document.getElementById('table-panel').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function renderPrebookTable() {
+    const prebookItems = expensesData.filter(i => i.source.includes('הזמנה מראש') || i.source.includes('3893'));
+    let html = '';
+
+    prebookItems.forEach(i => {
+      const badgeClass = getBadgeClass(i.cat);
+      html += `
+        <tr>
+          <td style="font-weight:600;">${i.desc}</td>
+          <td><span class="badge ${badgeClass}">${i.cat}</span></td>
+          <td>${i.origCurrency}</td>
+          <td>${i.origCurrency === 'EUR' ? '€' : i.origCurrency === 'HUF' ? 'Ft' : '$'}${i.origAmount.toLocaleString()}</td>
+          <td>${i.rate.toFixed(4)}</td>
+          <td style="font-weight:600; color:var(--accent-blue);">₪${i.nisAmount.toLocaleString('he-IL', {maximumFractionDigits:2})}</td>
+        </tr>
+      `;
+    });
+
+    document.getElementById('prebook-table-body').innerHTML = html;
+  }
+
+  function getBadgeClass(cat) {
+    if (cat === 'מלונות ואירוח') return 'badge-hotel';
+    if (cat === 'מסעדות ובתי קפה') return 'badge-food';
+    if (cat === 'אטרקציות ובילויים') return 'badge-attraction';
+    if (cat === 'תחבורה, דלק וחניה') return 'badge-transport';
+    if (cat === 'קניות וסופרמרקט') return 'badge-shop';
+    if (cat === 'ביטוח ורומינג') return 'badge-insurance';
+    return 'badge-other';
+  }
+
+  function setSourceFilter(type, btn) {
+    activeSourceFilter = type;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderTable();
+  }
+
+  function renderTable() {
+    const query = document.getElementById('search-box').value.toLowerCase();
+    const selectedCategory = document.getElementById('category-filter').value;
+
+    let filtered = expensesData.filter(i => {
+      const matchSearch = i.desc.toLowerCase().includes(query) || i.cat.toLowerCase().includes(query);
+      const matchCategory = (selectedCategory === 'all' || i.cat === selectedCategory);
+      
+      let matchSource = true;
+      if (activeSourceFilter === 'laya') matchSource = i.source.includes('Laya');
+      if (activeSourceFilter === 'prebook') matchSource = (i.source.includes('הזמנה מראש') || i.source.includes('3893'));
+
+      return matchSearch && matchCategory && matchSource;
+    });
+
+    let html = '';
+    let filteredSum = 0;
+
+    filtered.forEach(i => {
+      filteredSum += i.nisAmount;
+      const badgeClass = getBadgeClass(i.cat);
+      const origStr = i.origCurrency === 'NIS' ? '-' : `${i.origAmount.toLocaleString()} ${i.origCurrency}`;
+
+      html += `
+        <tr>
+          <td>${i.date}</td>
+          <td style="font-weight:500;">${i.desc}</td>
+          <td><span class="badge ${badgeClass}">${i.cat}</span></td>
+          <td>${origStr}</td>
+          <td style="font-weight:600;">₪${i.nisAmount.toLocaleString('he-IL', {maximumFractionDigits:2})}</td>
+          <td style="color:var(--text-muted); font-size:0.85rem;">${i.source}</td>
+        </tr>
+      `;
+    });
+
+    document.getElementById('expenses-table-body').innerHTML = html;
+    document.getElementById('filtered-count').innerText = `מציג ${filtered.length} פריטים`;
+    document.getElementById('filtered-total').innerText = `סה"כ מסונן: ₪${filteredSum.toLocaleString('he-IL', {maximumFractionDigits:2})}`;
+  }
+
+  window.onload = init;
+</script>
+
+</body>
+</html>
