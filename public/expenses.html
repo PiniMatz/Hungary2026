@@ -4,21 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>סיכום הוצאות חופשה הונגריה - אוגוסט 2026</title>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- UI/UX Pro Max Typography: Lexend + Rubik -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
   <style>
     :root {
-      --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-      --card-bg: #1e293b;
-      --card-border: #334155;
+      --font-main: 'Lexend', 'Rubik', -apple-system, BlinkMacSystemFont, sans-serif;
+      --bg-gradient: radial-gradient(circle at 50% 0%, #1e293b 0%, #0b1329 100%);
+      --card-bg: rgba(30, 41, 59, 0.75);
+      --card-bg-hover: rgba(30, 41, 59, 0.9);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-border-glow: rgba(56, 189, 248, 0.25);
+      --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+      --backdrop-filter: blur(16px);
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --accent-blue: #38bdf8;
-      --accent-green: #4ade80;
+      --accent-green: #34d399;
       --accent-amber: #fbbf24;
       --accent-purple: #c084fc;
       --accent-rose: #fb7185;
       --accent-pink: #f472b6;
-      --accent-emerald: #34d399;
+      --accent-indigo: #818cf8;
+      --focus-ring: #38bdf8;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -30,11 +40,14 @@
     }
 
     body {
-      font-family: 'Rubik', sans-serif;
+      font-family: var(--font-main);
       background: #0b1329;
+      background-image: var(--bg-gradient);
+      background-attachment: fixed;
       color: var(--text-main);
       padding: 1.25rem;
       min-height: 100vh;
+      line-height: 1.5;
     }
 
     .container {
@@ -58,13 +71,27 @@
     }
 
     .title-area h1 {
-      font-size: 1.75rem;
+      font-size: 1.85rem;
       font-weight: 700;
       background: linear-gradient(90deg, #38bdf8, #818cf8);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 0.35rem;
       line-height: 1.25;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .flag-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 0.2rem 0.6rem;
+      font-size: 1.1rem;
     }
 
     .title-area p {
@@ -79,11 +106,11 @@
     }
 
     .btn {
-      background: #2563eb;
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
       color: #fff;
-      border: none;
-      padding: 0.65rem 1.2rem;
-      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 0.65rem 1.25rem;
+      border-radius: 12px;
       font-family: inherit;
       font-weight: 500;
       font-size: 0.9rem;
@@ -92,20 +119,27 @@
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      transition: all 0.2s ease;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       min-height: 44px;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
       touch-action: manipulation;
     }
 
-    .btn:hover, .btn:active {
-      background: #1d4ed8;
-      transform: translateY(-1px);
+    .btn:hover {
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
     }
 
-    /* KPI Grid */
+    .btn:focus-visible {
+      outline: 2px solid var(--focus-ring);
+      outline-offset: 2px;
+    }
+
+    /* KPI Grid - Glassmorphism UI */
     .kpi-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1rem;
       margin-bottom: 1.5rem;
       width: 100%;
@@ -113,11 +147,20 @@
 
     .kpi-card {
       background: var(--card-bg);
+      backdrop-filter: var(--backdrop-filter);
+      -webkit-backdrop-filter: var(--backdrop-filter);
       border: 1px solid var(--card-border);
-      border-radius: 14px;
+      border-radius: 16px;
       padding: 1.25rem;
       position: relative;
       overflow: hidden;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .kpi-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--card-border-glow);
     }
 
     .kpi-card::before {
@@ -132,43 +175,50 @@
     .kpi-laya1290::before { background: var(--accent-rose); }
 
     .kpi-title {
-      font-size: 0.825rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
       margin-bottom: 0.4rem;
+      font-weight: 500;
     }
 
     .kpi-value {
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       font-weight: 700;
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.25rem;
       line-height: 1.2;
+      letter-spacing: -0.02em;
     }
 
     .kpi-sub {
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
     }
 
-    /* Category Panel Full Width Top */
-    .cat-panel {
+    /* Glass Panels */
+    .cat-panel, .panel, footer.prebook-footer {
       background: var(--card-bg);
+      backdrop-filter: var(--backdrop-filter);
+      -webkit-backdrop-filter: var(--backdrop-filter);
       border: 1px solid var(--card-border);
-      border-radius: 14px;
+      border-radius: 16px;
       padding: 1.25rem;
       margin-bottom: 1.5rem;
       width: 100%;
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
     }
 
     .panel-header {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 600;
-      margin-bottom: 1rem;
+      margin-bottom: 1.1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      color: var(--text-main);
     }
 
-    /* Category List */
+    /* Category Grid */
     .category-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -178,28 +228,34 @@
 
     .category-item {
       cursor: pointer;
-      padding: 0.6rem 0.75rem;
-      border-radius: 10px;
-      background: #0f172a;
-      border: 1px solid rgba(255,255,255,0.05);
-      transition: background 0.2s ease, transform 0.1s ease;
+      padding: 0.7rem 0.85rem;
+      border-radius: 12px;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       -webkit-tap-highlight-color: transparent;
     }
 
+    .category-item:hover {
+      background: rgba(30, 41, 59, 0.8);
+      border-color: rgba(56, 189, 248, 0.3);
+      transform: translateY(-1px);
+    }
+
     .category-item:active {
-      background: rgba(255,255,255,0.08);
       transform: scale(0.99);
     }
 
     .cat-meta {
       display: flex;
       justify-content: space-between;
-      font-size: 0.875rem;
-      margin-bottom: 0.4rem;
+      font-size: 0.9rem;
+      margin-bottom: 0.45rem;
+      font-weight: 500;
     }
 
     .cat-bar-bg {
-      background: #1e293b;
+      background: rgba(15, 23, 42, 0.8);
       height: 8px;
       border-radius: 4px;
       overflow: hidden;
@@ -208,52 +264,65 @@
     .cat-bar-fill {
       height: 100%;
       border-radius: 4px;
-      transition: width 0.4s ease;
+      transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     /* Controls & Filters */
-    .panel {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 1.25rem;
-      width: 100%;
-      margin-bottom: 1.5rem;
-      overflow: hidden;
-    }
-
     .controls {
       display: flex;
       flex-direction: column;
-      gap: 0.85rem;
+      gap: 0.9rem;
       margin-bottom: 1.25rem;
       width: 100%;
     }
 
     .filter-group {
       display: flex;
-      gap: 0.6rem;
+      gap: 0.75rem;
       align-items: center;
       flex-wrap: wrap;
       width: 100%;
     }
 
+    .input-wrapper {
+      position: relative;
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .input-icon {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
     .search-input, .select-input {
-      background: #0f172a;
+      background: rgba(15, 23, 42, 0.7);
       border: 1px solid var(--card-border);
       color: var(--text-main);
       padding: 0.65rem 0.85rem;
-      border-radius: 10px;
+      border-radius: 12px;
       font-family: inherit;
       font-size: 0.9rem;
       min-height: 44px;
       outline: none;
       width: 100%;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .search-input { padding-right: 2.3rem; }
+
+    .search-input:focus, .select-input:focus {
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
     }
 
     .filter-tabs {
       display: flex;
-      gap: 0.4rem;
+      gap: 0.45rem;
       width: 100%;
       overflow-x: auto;
       padding-bottom: 0.3rem;
@@ -261,25 +330,38 @@
     }
 
     .tab-btn {
-      background: #0f172a;
+      background: rgba(15, 23, 42, 0.7);
       border: 1px solid var(--card-border);
       color: var(--text-muted);
-      padding: 0.55rem 0.85rem;
-      border-radius: 8px;
+      padding: 0.55rem 0.95rem;
+      border-radius: 10px;
       font-family: inherit;
-      font-size: 0.825rem;
+      font-size: 0.85rem;
+      font-weight: 500;
       cursor: pointer;
       white-space: nowrap;
-      min-height: 40px;
+      min-height: 42px;
       flex: 1;
       text-align: center;
       touch-action: manipulation;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-main);
+      background: rgba(30, 41, 59, 0.9);
     }
 
     .tab-btn.active {
       background: #2563eb;
       color: #fff;
       border-color: #2563eb;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+
+    .tab-btn:focus-visible {
+      outline: 2px solid var(--focus-ring);
+      outline-offset: 2px;
     }
 
     /* Table Container (Desktop / Tablet) */
@@ -287,68 +369,78 @@
       width: 100%;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
+      border-radius: 12px;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
       text-align: right;
-      font-size: 0.875rem;
+      font-size: 0.9rem;
       white-space: nowrap;
     }
 
     th {
-      background: #0f172a;
+      background: rgba(15, 23, 42, 0.9);
       color: var(--text-muted);
-      padding: 0.75rem 0.85rem;
-      font-weight: 500;
+      padding: 0.85rem 1rem;
+      font-weight: 600;
       border-bottom: 1px solid var(--card-border);
     }
 
     td {
-      padding: 0.75rem 0.85rem;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
     }
 
+    tr:hover td {
+      background: rgba(255,255,255,0.02);
+    }
+
+    /* Vector SVG Badges */
     .badge {
-      display: inline-block;
-      padding: 0.25rem 0.55rem;
-      border-radius: 6px;
-      font-size: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.3rem 0.65rem;
+      border-radius: 9999px;
+      font-size: 0.78rem;
       font-weight: 500;
+      border: 1px solid transparent;
     }
 
-    .badge-flight { background: rgba(96, 165, 250, 0.15); color: #60a5fa; }
-    .badge-hotel { background: rgba(192, 132, 252, 0.15); color: #c084fc; }
-    .badge-food { background: rgba(251, 113, 133, 0.15); color: #fb7185; }
-    .badge-attraction { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
-    .badge-transport { background: rgba(74, 222, 128, 0.15); color: #4ade80; }
-    .badge-clothing { background: rgba(244, 114, 182, 0.15); color: #f472b6; }
-    .badge-supermarket { background: rgba(251, 191, 36, 0.15); color: #fbbf24; }
-    .badge-pharmacy { background: rgba(52, 211, 153, 0.15); color: #34d399; }
-    .badge-insurance { background: rgba(167, 139, 250, 0.15); color: #a78bfa; }
-    .badge-other { background: rgba(148, 163, 184, 0.15); color: #94a3b8; }
+    .badge-flight { background: rgba(96, 165, 250, 0.12); color: #60a5fa; border-color: rgba(96, 165, 250, 0.25); }
+    .badge-hotel { background: rgba(192, 132, 252, 0.12); color: #c084fc; border-color: rgba(192, 132, 252, 0.25); }
+    .badge-food { background: rgba(251, 113, 133, 0.12); color: #fb7185; border-color: rgba(251, 113, 133, 0.25); }
+    .badge-attraction { background: rgba(56, 189, 248, 0.12); color: #38bdf8; border-color: rgba(56, 189, 248, 0.25); }
+    .badge-transport { background: rgba(52, 211, 153, 0.12); color: #34d399; border-color: rgba(52, 211, 153, 0.25); }
+    .badge-clothing { background: rgba(244, 114, 182, 0.12); color: #f472b6; border-color: rgba(244, 114, 182, 0.25); }
+    .badge-supermarket { background: rgba(251, 191, 36, 0.12); color: #fbbf24; border-color: rgba(251, 191, 36, 0.25); }
+    .badge-pharmacy { background: rgba(45, 212, 191, 0.12); color: #2dd4bf; border-color: rgba(45, 212, 191, 0.25); }
+    .badge-insurance { background: rgba(167, 139, 250, 0.12); color: #a78bfa; border-color: rgba(167, 139, 250, 0.25); }
+    .badge-other { background: rgba(148, 163, 184, 0.12); color: #94a3b8; border-color: rgba(148, 163, 184, 0.25); }
 
-    .tag-laya9191 { background: rgba(251, 191, 36, 0.2); color: #fbbf24; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight:600; font-size: 0.78rem; }
-    .tag-laya1290 { background: rgba(251, 113, 133, 0.2); color: #fb7185; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight:600; font-size: 0.78rem; }
+    .tag-laya9191 { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); padding: 0.2rem 0.55rem; border-radius: 6px; font-weight:600; font-size: 0.78rem; }
+    .tag-laya1290 { background: rgba(251, 113, 133, 0.15); color: #fb7185; border: 1px solid rgba(251, 113, 133, 0.3); padding: 0.2rem 0.55rem; border-radius: 6px; font-weight:600; font-size: 0.78rem; }
 
     /* Mobile Cards View (Hidden on Desktop, Visible on Mobile) */
     .mobile-cards-list {
       display: none;
       flex-direction: column;
-      gap: 0.75rem;
+      gap: 0.85rem;
       width: 100%;
     }
 
     .m-card {
-      background: #0f172a;
+      background: rgba(15, 23, 42, 0.7);
       border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 0.9rem;
+      border-radius: 14px;
+      padding: 1rem;
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
+      gap: 0.45rem;
       width: 100%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
     .m-card-header {
@@ -361,13 +453,13 @@
     .m-card-title {
       font-weight: 600;
       font-size: 0.95rem;
-      line-height: 1.3;
+      line-height: 1.35;
       color: #fff;
     }
 
     .m-card-price {
       font-weight: 700;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       color: var(--accent-blue);
       white-space: nowrap;
     }
@@ -376,7 +468,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 0.2rem;
+      margin-top: 0.25rem;
       flex-wrap: wrap;
       gap: 0.4rem;
     }
@@ -389,31 +481,22 @@
     }
 
     .m-card-sub {
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
     }
 
     .summary-bar {
       margin-top: 1rem;
-      padding: 0.75rem 1rem;
-      background: #0f172a;
-      border-radius: 8px;
+      padding: 0.85rem 1.1rem;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
       display: flex;
       justify-content: space-between;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       flex-wrap: wrap;
       gap: 0.5rem;
-      width: 100%;
-    }
-
-    /* Footer Section for Pre-booked Items */
-    footer.prebook-footer {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 1.25rem;
-      margin-top: 2rem;
       width: 100%;
     }
 
@@ -428,22 +511,22 @@
       }
 
       .btn { width: 100%; }
-      .title-area h1 { font-size: 1.35rem; }
+      .title-area h1 { font-size: 1.4rem; }
 
       .kpi-grid {
         grid-template-columns: 1fr;
         gap: 0.75rem;
       }
 
-      .kpi-card { padding: 0.9rem; }
-      .kpi-value { font-size: 1.4rem; }
+      .kpi-card { padding: 1rem; }
+      .kpi-value { font-size: 1.5rem; }
 
       .category-grid {
         grid-template-columns: 1fr;
-        gap: 0.6rem;
+        gap: 0.65rem;
       }
 
-      .panel { padding: 0.85rem; }
+      .cat-panel, .panel, footer.prebook-footer { padding: 0.95rem; }
 
       .desktop-table { display: none; }
       .mobile-cards-list { display: flex; }
@@ -451,9 +534,9 @@
 
     @media print {
       body { background: #fff; color: #000; padding: 0; }
-      .panel, .kpi-card, footer.prebook-footer { background: #fff; border: 1px solid #ccc; color: #000; }
+      .panel, .kpi-card, footer.prebook-footer, .cat-panel { background: #fff; border: 1px solid #ccc; color: #000; box-shadow: none; backdrop-filter: none; }
       .search-input, .select-input, .filter-tabs, .btn { display: none; }
-      .title-area h1 { background: none; -webkit-text-fill-color: #000; }
+      .title-area h1 { background: none; -webkit-text-fill-color: #000; color: #000; }
       .desktop-table { display: table !important; }
       .mobile-cards-list { display: none !important; }
       th { background: #f1f5f9; color: #000; }
@@ -467,11 +550,17 @@
 
   <header>
     <div class="title-area">
-      <h1>🇭🇺 דוח סיכום הוצאות חופשה הונגריה</h1>
+      <h1>
+        <span class="flag-badge" aria-hidden="true">🇭🇺</span>
+        דוח סיכום הוצאות חופשה הונגריה
+      </h1>
       <p>תאריכים: 13.08.2026 – 23.08.2026 | בודפשט ואזור אגם בלטון</p>
     </div>
     <div class="header-actions">
-      <button class="btn" onclick="window.print()">🖨️ הדפס / שמור כ-PDF</button>
+      <button class="btn" onclick="window.print()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+        הדפס / שמור כ-PDF
+      </button>
     </div>
   </header>
 
@@ -503,7 +592,7 @@
   <div class="cat-panel">
     <div class="panel-header">
       <span>חלוקת הוצאות לפי קטגוריות</span>
-      <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted);">(לחץ לסינון הטבלה)</span>
+      <span style="font-size:0.825rem; font-weight:normal; color:var(--text-muted);">(לחץ לסינון הטבלה)</span>
     </div>
     <div class="category-grid" id="category-bars"></div>
   </div>
@@ -516,7 +605,7 @@
       </div>
       
       <div class="filter-group">
-        <select id="category-filter" class="select-input" onchange="renderTable()">
+        <select id="category-filter" class="select-input" onchange="renderTable()" aria-label="סינון לפי קטגוריה">
           <option value="all">כל הקטגוריות</option>
           <option value="טיסות ותחבורה">טיסות ותחבורה</option>
           <option value="מלונות ואירוח">מלונות ואירוח</option>
@@ -530,14 +619,17 @@
           <option value="שונות">שונות</option>
         </select>
 
-        <input type="text" id="search-box" class="search-input" placeholder="חפש בית עסק..." oninput="renderTable()">
+        <div class="input-wrapper">
+          <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="search-box" class="search-input" placeholder="חפש בית עסק..." oninput="renderTable()" aria-label="חיפוש בית עסק">
+        </div>
       </div>
 
-      <div class="filter-tabs">
-        <button class="tab-btn active" onclick="setSourceFilter('all', this)">הכל</button>
-        <button class="tab-btn" onclick="setSourceFilter('9191', this)">Laya 9191</button>
-        <button class="tab-btn" onclick="setSourceFilter('1290', this)">Laya 1290</button>
-        <button class="tab-btn" onclick="setSourceFilter('prebook', this)">הזמנות מראש</button>
+      <div class="filter-tabs" role="tablist">
+        <button class="tab-btn active" role="tab" aria-selected="true" onclick="setSourceFilter('all', this)">הכל</button>
+        <button class="tab-btn" role="tab" aria-selected="false" onclick="setSourceFilter('9191', this)">Laya 9191</button>
+        <button class="tab-btn" role="tab" aria-selected="false" onclick="setSourceFilter('1290', this)">Laya 1290</button>
+        <button class="tab-btn" role="tab" aria-selected="false" onclick="setSourceFilter('prebook', this)">הזמנות מראש</button>
       </div>
     </div>
 
@@ -563,7 +655,7 @@
 
     <div class="summary-bar">
       <span id="filtered-count">מציג 0 פריטים</span>
-      <span id="filtered-total">סה"כ מסונן: ₪0</span>
+      <span id="filtered-total" style="color: var(--accent-blue);">סה"כ מסונן: ₪0</span>
     </div>
   </div>
 
@@ -1462,8 +1554,6 @@
     document.getElementById('prebook-nis-val').innerText = '₪' + prebookNis.toLocaleString('he-IL', {maximumFractionDigits: 2});
     document.getElementById('laya9191-nis-val').innerText = '₪' + laya9191Nis.toLocaleString('he-IL', {maximumFractionDigits: 2});
     document.getElementById('laya1290-nis-val').innerText = '₪' + laya1290Nis.toLocaleString('he-IL', {maximumFractionDigits: 2});
-    
-    // Update subtext with calculated NIS total for 1290
     document.getElementById('laya1290-sub').innerText = '109,243 Ft (19 רכישות)';
   }
 
@@ -1480,11 +1570,11 @@
       'טיסות ותחבורה': '#60a5fa',
       'מלונות ואירוח': '#c084fc',
       'ביגוד והנעלה': '#f472b6',
-      'תחבורה, דלק וחניה': '#4ade80',
+      'תחבורה, דלק וחניה': '#34d399',
       'מסעדות ובתי קפה': '#fb7185',
       'אטרקציות ובילויים': '#38bdf8',
       'סופרמרקט ומזון': '#fbbf24',
-      'פארם וחנויות נוחות': '#34d399',
+      'פארם וחנויות נוחות': '#2dd4bf',
       'ביטוח ורומינג': '#a78bfa',
       'שונות': '#94a3b8'
     };
@@ -1570,8 +1660,12 @@
 
   function setSourceFilter(type, btn) {
     activeSourceFilter = type;
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-selected', 'false');
+    });
     btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
     renderTable();
   }
 
