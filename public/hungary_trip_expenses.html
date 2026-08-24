@@ -3,32 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>סיכום הוצאות חופשה הונגריה - אוגוסט 2026</title>
-  <!-- UI/UX Pro Max Typography: Lexend + Rubik -->
+  <title>הונגריה 2026 | דוח הוצאות חופשה</title>
+  
+  <!-- UI-UX Pro Max Fonts: Fira Code (Monospace stats) + Lexend + Rubik -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@300;400;500;600;700&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
   <style>
     :root {
-      --font-main: 'Lexend', 'Rubik', -apple-system, BlinkMacSystemFont, sans-serif;
-      --bg-gradient: radial-gradient(circle at 50% 0%, #1e293b 0%, #0b1329 100%);
-      --card-bg: rgba(30, 41, 59, 0.75);
-      --card-bg-hover: rgba(30, 41, 59, 0.9);
-      --card-border: rgba(255, 255, 255, 0.08);
-      --card-border-glow: rgba(56, 189, 248, 0.25);
-      --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
-      --backdrop-filter: blur(16px);
+      --font-sans: 'Lexend', 'Rubik', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'Fira Code', monospace;
+      
+      --bg-page: #020617;
+      --bg-radial: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #0f172a 40%, #020617 100%);
+      
+      /* Bento Card Design Tokens */
+      --bento-bg: rgba(15, 23, 42, 0.7);
+      --bento-bg-hover: rgba(30, 41, 59, 0.85);
+      --bento-border: rgba(255, 255, 255, 0.08);
+      --bento-border-glow: rgba(99, 102, 241, 0.4);
+      --bento-radius: 24px;
+      --bento-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+      --glass-blur: blur(20px);
+
+      /* Accent Tokens */
+      --brand-indigo: #6366f1;
+      --brand-cyan: #38bdf8;
+      --brand-emerald: #10b981;
+      --brand-amber: #f59e0b;
+      --brand-rose: #f43f5e;
+      --brand-purple: #a855f7;
+      
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
-      --accent-blue: #38bdf8;
-      --accent-green: #34d399;
-      --accent-amber: #fbbf24;
-      --accent-purple: #c084fc;
-      --accent-rose: #fb7185;
-      --accent-pink: #f472b6;
-      --accent-indigo: #818cf8;
-      --focus-ring: #38bdf8;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -40,572 +48,679 @@
     }
 
     body {
-      font-family: var(--font-main);
-      background: #0b1329;
-      background-image: var(--bg-gradient);
+      font-family: var(--font-sans);
+      background: var(--bg-page);
+      background-image: var(--bg-radial);
       background-attachment: fixed;
       color: var(--text-main);
-      padding: 1.25rem;
+      padding: 1.5rem;
       min-height: 100vh;
       line-height: 1.5;
     }
 
-    .container {
-      width: 100%;
-      max-width: 1280px;
+    .app-viewport {
+      max-width: 1320px;
       margin: 0 auto;
-      overflow: hidden;
     }
 
-    /* Header */
-    header {
+    /* Top Bar Navigation Header */
+    .top-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 1.5rem;
-      padding-bottom: 1.25rem;
-      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 2rem;
+      padding: 1rem 1.5rem;
+      background: rgba(15, 23, 42, 0.5);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--bento-border);
+      border-radius: 20px;
       flex-wrap: wrap;
       gap: 1rem;
-      width: 100%;
     }
 
-    .title-area h1 {
-      font-size: 1.85rem;
-      font-weight: 700;
-      background: linear-gradient(90deg, #38bdf8, #818cf8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 0.35rem;
-      line-height: 1.25;
+    .brand-title {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.85rem;
     }
 
-    .flag-badge {
+    .flag-pill {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(16, 185, 129, 0.2));
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      padding: 0.35rem 0.75rem;
+      font-size: 1.25rem;
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid var(--card-border);
-      border-radius: 8px;
-      padding: 0.2rem 0.6rem;
-      font-size: 1.1rem;
     }
 
-    .title-area p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
+    .brand-title h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(90deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .header-actions {
-      display: flex;
-      gap: 0.75rem;
-      align-items: center;
-    }
-
-    .btn {
-      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.15);
-      padding: 0.65rem 1.25rem;
-      border-radius: 12px;
-      font-family: inherit;
+    .badge-date {
+      background: rgba(99, 102, 241, 0.15);
+      color: #818cf8;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.825rem;
       font-weight: 500;
+    }
+
+    .print-btn {
+      background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 0.65rem 1.4rem;
+      border-radius: 14px;
+      font-family: inherit;
+      font-weight: 600;
       font-size: 0.9rem;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      gap: 0.6rem;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 8px 20px -4px rgba(99, 102, 241, 0.4);
       min-height: 44px;
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
-      touch-action: manipulation;
     }
 
-    .btn:hover {
-      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    .print-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+      box-shadow: 0 12px 25px -4px rgba(99, 102, 241, 0.6);
+      background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
     }
 
-    .btn:focus-visible {
-      outline: 2px solid var(--focus-ring);
-      outline-offset: 2px;
-    }
-
-    /* KPI Grid - Glassmorphism UI */
-    .kpi-grid {
+    /* Bento Box Master Grid Layout */
+    .bento-hero-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-      width: 100%;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: minmax(180px, auto);
+      gap: 1.25rem;
+      margin-bottom: 2rem;
     }
 
-    .kpi-card {
-      background: var(--card-bg);
-      backdrop-filter: var(--backdrop-filter);
-      -webkit-backdrop-filter: var(--backdrop-filter);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 1.25rem;
+    .bento-card {
+      background: var(--bento-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--bento-border);
+      border-radius: var(--bento-radius);
+      padding: 1.5rem;
       position: relative;
       overflow: hidden;
-      box-shadow: var(--card-shadow);
-      transition: transform 0.2s ease, border-color 0.2s ease;
+      box-shadow: var(--bento-shadow);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
-    .kpi-card:hover {
-      transform: translateY(-3px);
-      border-color: var(--card-border-glow);
+    .bento-card:hover {
+      transform: translateY(-4px) scale(1.01);
+      border-color: var(--bento-border-glow);
+      background: var(--bento-bg-hover);
     }
 
-    .kpi-card::before {
-      content: '';
-      position: absolute;
-      top: 0; right: 0; left: 0; height: 4px;
+    .bento-span-2 { grid-column: span 2; grid-row: span 2; }
+    .bento-span-1 { grid-column: span 1; }
+
+    /* Main Featured Bento Card */
+    .bento-featured {
+      background: linear-gradient(145deg, rgba(30, 27, 75, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
+      border: 1px solid rgba(129, 140, 248, 0.3);
     }
 
-    .kpi-total::before { background: var(--accent-blue); }
-    .kpi-prebook::before { background: var(--accent-purple); }
-    .kpi-laya9191::before { background: var(--accent-amber); }
-    .kpi-laya1290::before { background: var(--accent-rose); }
+    .bento-header-tag {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
 
-    .kpi-title {
-      font-size: 0.85rem;
+    .bento-tag-pill {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      background: rgba(255,255,255,0.06);
       color: var(--text-muted);
-      margin-bottom: 0.4rem;
-      font-weight: 500;
     }
 
-    .kpi-value {
-      font-size: 1.7rem;
+    .hero-amount {
+      font-family: var(--font-mono);
+      font-size: 3rem;
       font-weight: 700;
-      margin-bottom: 0.25rem;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      background: linear-gradient(90deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
     }
 
-    .kpi-sub {
+    .hero-sub {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Sparkline Cost Split Visualizer Bar */
+    .cost-split-bar {
+      display: flex;
+      height: 12px;
+      border-radius: 6px;
+      overflow: hidden;
+      gap: 3px;
+      margin-bottom: 1rem;
+      background: rgba(15, 23, 42, 0.8);
+      padding: 2px;
+    }
+
+    .split-seg {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.6s ease;
+    }
+
+    .split-labels {
+      display: flex;
+      justify-content: space-between;
       font-size: 0.8rem;
       color: var(--text-muted);
     }
 
-    /* Glass Panels */
-    .cat-panel, .panel, footer.prebook-footer {
-      background: var(--card-bg);
-      backdrop-filter: var(--backdrop-filter);
-      -webkit-backdrop-filter: var(--backdrop-filter);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 1.25rem;
-      margin-bottom: 1.5rem;
-      width: 100%;
-      box-shadow: var(--card-shadow);
-      overflow: hidden;
+    .split-legend {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 0.75rem;
     }
 
-    .panel-header {
-      font-size: 1.15rem;
-      font-weight: 600;
-      margin-bottom: 1.1rem;
+    .leg-item {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      color: var(--text-main);
+      gap: 0.4rem;
+      font-size: 0.8rem;
     }
 
-    /* Category Grid */
-    .category-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 0.85rem;
-      width: 100%;
+    .leg-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
     }
 
-    .category-item {
-      cursor: pointer;
-      padding: 0.7rem 0.85rem;
-      border-radius: 12px;
-      background: rgba(15, 23, 42, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .category-item:hover {
-      background: rgba(30, 41, 59, 0.8);
-      border-color: rgba(56, 189, 248, 0.3);
-      transform: translateY(-1px);
-    }
-
-    .category-item:active {
-      transform: scale(0.99);
-    }
-
-    .cat-meta {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.9rem;
-      margin-bottom: 0.45rem;
+    /* Small Bento Metric Cards */
+    .bento-metric-title {
+      font-size: 0.85rem;
+      color: var(--text-muted);
       font-weight: 500;
     }
 
-    .cat-bar-bg {
+    .bento-metric-val {
+      font-family: var(--font-mono);
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin: 0.5rem 0;
+      letter-spacing: -0.02em;
+    }
+
+    .bento-metric-footer {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* Color Variants for Cards */
+    .card-purple .bento-metric-val { color: var(--brand-purple); }
+    .card-amber .bento-metric-val { color: var(--brand-amber); }
+    .card-rose .bento-metric-val { color: var(--brand-rose); }
+    .card-emerald .bento-metric-val { color: var(--brand-emerald); }
+
+    /* Category Section Bento Box */
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .category-bento-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .cat-bento-card {
+      background: var(--bento-bg);
+      backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--bento-border);
+      border-radius: 18px;
+      padding: 1.1rem;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .cat-bento-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(56, 189, 248, 0.3);
+      background: var(--bento-bg-hover);
+    }
+
+    .cat-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.6rem;
+    }
+
+    .cat-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .cat-val {
+      font-family: var(--font-mono);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--brand-cyan);
+    }
+
+    .cat-progress-bg {
       background: rgba(15, 23, 42, 0.8);
-      height: 8px;
-      border-radius: 4px;
+      height: 6px;
+      border-radius: 3px;
       overflow: hidden;
     }
 
-    .cat-bar-fill {
+    .cat-progress-fill {
       height: 100%;
-      border-radius: 4px;
-      transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 3px;
+      transition: width 0.5s ease;
     }
 
-    /* Controls & Filters */
-    .controls {
+    /* Table & Controls Main Section */
+    .table-bento-panel {
+      background: var(--bento-bg);
+      backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--bento-border);
+      border-radius: var(--bento-radius);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--bento-shadow);
+    }
+
+    .controls-wrapper {
       display: flex;
       flex-direction: column;
-      gap: 0.9rem;
-      margin-bottom: 1.25rem;
-      width: 100%;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
     }
 
-    .filter-group {
-      display: flex;
-      gap: 0.75rem;
-      align-items: center;
-      flex-wrap: wrap;
-      width: 100%;
+    .search-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 1rem;
     }
 
-    .input-wrapper {
+    .input-field-wrap {
       position: relative;
-      flex: 1;
-      min-width: 200px;
+      width: 100%;
     }
 
-    .input-icon {
-      position: absolute;
-      right: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-muted);
-      pointer-events: none;
-    }
-
-    .search-input, .select-input {
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid var(--card-border);
+    .search-input-field, .select-input-field {
+      background: rgba(2, 6, 23, 0.7);
+      border: 1px solid var(--bento-border);
       color: var(--text-main);
-      padding: 0.65rem 0.85rem;
-      border-radius: 12px;
+      padding: 0.75rem 1rem;
+      border-radius: 14px;
       font-family: inherit;
-      font-size: 0.9rem;
-      min-height: 44px;
+      font-size: 0.925rem;
+      min-height: 48px;
       outline: none;
       width: 100%;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .search-input { padding-right: 2.3rem; }
-
-    .search-input:focus, .select-input:focus {
-      border-color: var(--accent-blue);
-      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
-    }
-
-    .filter-tabs {
-      display: flex;
-      gap: 0.45rem;
-      width: 100%;
-      overflow-x: auto;
-      padding-bottom: 0.3rem;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .tab-btn {
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid var(--card-border);
-      color: var(--text-muted);
-      padding: 0.55rem 0.95rem;
-      border-radius: 10px;
-      font-family: inherit;
-      font-size: 0.85rem;
-      font-weight: 500;
-      cursor: pointer;
-      white-space: nowrap;
-      min-height: 42px;
-      flex: 1;
-      text-align: center;
-      touch-action: manipulation;
       transition: all 0.2s ease;
     }
 
-    .tab-btn:hover {
-      color: var(--text-main);
-      background: rgba(30, 41, 59, 0.9);
+    .search-input-field:focus, .select-input-field:focus {
+      border-color: var(--brand-cyan);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
     }
 
-    .tab-btn.active {
-      background: #2563eb;
+    /* iOS Segmented Source Filter Tabs */
+    .segmented-control {
+      display: flex;
+      background: rgba(2, 6, 23, 0.8);
+      border: 1px solid var(--bento-border);
+      padding: 4px;
+      border-radius: 16px;
+      gap: 4px;
+    }
+
+    .seg-btn {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 0.6rem 1rem;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+      min-height: 40px;
+    }
+
+    .seg-btn.active {
+      background: var(--brand-indigo);
       color: #fff;
-      border-color: #2563eb;
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
     }
 
-    .tab-btn:focus-visible {
-      outline: 2px solid var(--focus-ring);
-      outline-offset: 2px;
-    }
-
-    /* Table Container (Desktop / Tablet) */
-    .table-container {
+    /* Data Table Styling */
+    .table-responsive {
       width: 100%;
       overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      border-radius: 12px;
     }
 
-    table {
+    table.bento-table {
       width: 100%;
-      border-collapse: collapse;
+      border-collapse: separate;
+      border-spacing: 0 6px;
       text-align: right;
       font-size: 0.9rem;
       white-space: nowrap;
     }
 
-    th {
-      background: rgba(15, 23, 42, 0.9);
+    table.bento-table th {
       color: var(--text-muted);
       padding: 0.85rem 1rem;
-      font-weight: 600;
-      border-bottom: 1px solid var(--card-border);
-    }
-
-    td {
-      padding: 0.85rem 1rem;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-    }
-
-    tr:hover td {
-      background: rgba(255,255,255,0.02);
-    }
-
-    /* Vector SVG Badges */
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.3rem 0.65rem;
-      border-radius: 9999px;
-      font-size: 0.78rem;
       font-weight: 500;
-      border: 1px solid transparent;
+      font-size: 0.825rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
-    .badge-flight { background: rgba(96, 165, 250, 0.12); color: #60a5fa; border-color: rgba(96, 165, 250, 0.25); }
-    .badge-hotel { background: rgba(192, 132, 252, 0.12); color: #c084fc; border-color: rgba(192, 132, 252, 0.25); }
-    .badge-food { background: rgba(251, 113, 133, 0.12); color: #fb7185; border-color: rgba(251, 113, 133, 0.25); }
-    .badge-attraction { background: rgba(56, 189, 248, 0.12); color: #38bdf8; border-color: rgba(56, 189, 248, 0.25); }
-    .badge-transport { background: rgba(52, 211, 153, 0.12); color: #34d399; border-color: rgba(52, 211, 153, 0.25); }
-    .badge-clothing { background: rgba(244, 114, 182, 0.12); color: #f472b6; border-color: rgba(244, 114, 182, 0.25); }
-    .badge-supermarket { background: rgba(251, 191, 36, 0.12); color: #fbbf24; border-color: rgba(251, 191, 36, 0.25); }
-    .badge-pharmacy { background: rgba(45, 212, 191, 0.12); color: #2dd4bf; border-color: rgba(45, 212, 191, 0.25); }
-    .badge-insurance { background: rgba(167, 139, 250, 0.12); color: #a78bfa; border-color: rgba(167, 139, 250, 0.25); }
-    .badge-other { background: rgba(148, 163, 184, 0.12); color: #94a3b8; border-color: rgba(148, 163, 184, 0.25); }
+    table.bento-table td {
+      background: rgba(15, 23, 42, 0.5);
+      padding: 0.9rem 1rem;
+      border-top: 1px solid rgba(255,255,255,0.03);
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
 
-    .tag-laya9191 { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); padding: 0.2rem 0.55rem; border-radius: 6px; font-weight:600; font-size: 0.78rem; }
-    .tag-laya1290 { background: rgba(251, 113, 133, 0.15); color: #fb7185; border: 1px solid rgba(251, 113, 133, 0.3); padding: 0.2rem 0.55rem; border-radius: 6px; font-weight:600; font-size: 0.78rem; }
+    table.bento-table tr td:first-child { border-radius: 0 12px 12px 0; }
+    table.bento-table tr td:last-child { border-radius: 12px 0 0 12px; }
 
-    /* Mobile Cards View (Hidden on Desktop, Visible on Mobile) */
-    .mobile-cards-list {
+    table.bento-table tr:hover td {
+      background: rgba(30, 41, 59, 0.7);
+    }
+
+    .table-price {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    /* Apple-Style Mobile Expense Cards */
+    .mobile-cards-container {
       display: none;
       flex-direction: column;
       gap: 0.85rem;
       width: 100%;
     }
 
-    .m-card {
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
+    .m-bento-card {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--bento-border);
+      border-radius: 16px;
       padding: 1rem;
       display: flex;
       flex-direction: column;
-      gap: 0.45rem;
-      width: 100%;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-
-    .m-card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
       gap: 0.5rem;
     }
 
-    .m-card-title {
+    .m-bento-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .m-bento-title {
       font-weight: 600;
       font-size: 0.95rem;
-      line-height: 1.35;
-      color: #fff;
     }
 
-    .m-card-price {
-      font-weight: 700;
+    .m-bento-price {
+      font-family: var(--font-mono);
       font-size: 1.1rem;
-      color: var(--accent-blue);
-      white-space: nowrap;
+      font-weight: 700;
+      color: var(--brand-cyan);
     }
 
-    .m-card-meta {
+    .m-bento-bot {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 0.25rem;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-
-    .m-card-tags {
-      display: flex;
-      gap: 0.35rem;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .m-card-sub {
       font-size: 0.8rem;
       color: var(--text-muted);
     }
 
-    .summary-bar {
-      margin-top: 1rem;
-      padding: 0.85rem 1.1rem;
-      background: rgba(15, 23, 42, 0.8);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      display: flex;
-      justify-content: space-between;
-      font-weight: 600;
-      font-size: 0.95rem;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      width: 100%;
+    /* Vector Pills */
+    .v-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 500;
     }
 
-    /* Mobile Media Queries (< 640px) */
-    @media (max-width: 640px) {
-      body { padding: 0.6rem; }
+    .v-badge-flight { background: rgba(96, 165, 250, 0.15); color: #60a5fa; }
+    .v-badge-hotel { background: rgba(192, 132, 252, 0.15); color: #c084fc; }
+    .v-badge-food { background: rgba(251, 113, 133, 0.15); color: #fb7185; }
+    .v-badge-attraction { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
+    .v-badge-transport { background: rgba(52, 211, 153, 0.15); color: #34d399; }
+    .v-badge-clothing { background: rgba(244, 114, 182, 0.15); color: #f472b6; }
+    .v-badge-supermarket { background: rgba(251, 191, 36, 0.15); color: #fbbf24; }
+    .v-badge-pharmacy { background: rgba(45, 212, 191, 0.15); color: #2dd4bf; }
+    .v-badge-insurance { background: rgba(167, 139, 250, 0.15); color: #a78bfa; }
+    .v-badge-other { background: rgba(148, 163, 184, 0.15); color: #94a3b8; }
+
+    .source-tag-9191 { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.3); padding: 0.2rem 0.5rem; border-radius: 6px; font-weight: 600; font-size: 0.78rem; }
+    .source-tag-1290 { background: rgba(244, 63, 94, 0.15); color: #f43f5e; border: 1px solid rgba(244, 63, 94, 0.3); padding: 0.2rem 0.5rem; border-radius: 6px; font-weight: 600; font-size: 0.78rem; }
+
+    /* Footer Reference Card */
+    .footer-bento-card {
+      background: var(--bento-bg);
+      backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--bento-border);
+      border-radius: var(--bento-radius);
+      padding: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    /* Media Queries for Bento Layout */
+    @media (max-width: 1024px) {
+      .bento-hero-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .bento-span-2 { grid-column: span 2; grid-row: span 1; }
+    }
+
+    @media (max-width: 680px) {
+      body { padding: 0.75rem; }
       
-      header {
+      .top-bar {
         flex-direction: column;
         align-items: stretch;
-        gap: 0.75rem;
       }
+      
+      .print-btn { width: 100%; }
 
-      .btn { width: 100%; }
-      .title-area h1 { font-size: 1.4rem; }
-
-      .kpi-grid {
+      .bento-hero-grid {
         grid-template-columns: 1fr;
-        gap: 0.75rem;
       }
 
-      .kpi-card { padding: 1rem; }
-      .kpi-value { font-size: 1.5rem; }
+      .bento-span-2 { grid-column: span 1; }
 
-      .category-grid {
+      .hero-amount { font-size: 2.25rem; }
+
+      .search-row {
         grid-template-columns: 1fr;
-        gap: 0.65rem;
       }
 
-      .cat-panel, .panel, footer.prebook-footer { padding: 0.95rem; }
+      .segmented-control {
+        overflow-x: auto;
+      }
 
-      .desktop-table { display: none; }
-      .mobile-cards-list { display: flex; }
+      .desktop-table-view { display: none; }
+      .mobile-cards-container { display: flex; }
     }
 
     @media print {
       body { background: #fff; color: #000; padding: 0; }
-      .panel, .kpi-card, footer.prebook-footer, .cat-panel { background: #fff; border: 1px solid #ccc; color: #000; box-shadow: none; backdrop-filter: none; }
-      .search-input, .select-input, .filter-tabs, .btn { display: none; }
-      .title-area h1 { background: none; -webkit-text-fill-color: #000; color: #000; }
-      .desktop-table { display: table !important; }
-      .mobile-cards-list { display: none !important; }
-      th { background: #f1f5f9; color: #000; }
-      td { border-bottom: 1px solid #ddd; }
+      .bento-card, .table-bento-panel, .footer-bento-card { background: #fff; border: 1px solid #ccc; color: #000; box-shadow: none; backdrop-filter: none; }
+      .print-btn, .controls-wrapper { display: none; }
+      .hero-amount { background: none; -webkit-text-fill-color: #000; color: #000; }
+      .desktop-table-view { display: table !important; }
+      .mobile-cards-container { display: none !important; }
     }
   </style>
 </head>
 <body>
 
-<div class="container">
+<div class="app-viewport">
 
-  <header>
-    <div class="title-area">
-      <h1>
-        <span class="flag-badge" aria-hidden="true">🇭🇺</span>
-        דוח סיכום הוצאות חופשה הונגריה
-      </h1>
-      <p>תאריכים: 13.08.2026 – 23.08.2026 | בודפשט ואזור אגם בלטון</p>
+  <!-- Top Header Bar -->
+  <header class="top-bar">
+    <div class="brand-title">
+      <span class="flag-pill">🇭🇺</span>
+      <div>
+        <h1>הונגריה 2026</h1>
+        <span class="badge-date">13 - 23 אוגוסט 2026 | בודפשט & אגם בלטון</span>
+      </div>
     </div>
-    <div class="header-actions">
-      <button class="btn" onclick="window.print()">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
-        הדפס / שמור כ-PDF
-      </button>
-    </div>
+    <button class="print-btn" onclick="window.print()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+      ייצוא / הדפסת דוח
+    </button>
   </header>
 
-  <!-- KPI Grid -->
-  <div class="kpi-grid">
-    <div class="kpi-card kpi-total">
-      <div class="kpi-title">סה"כ הוצאות כולל (ש"ח)</div>
-      <div class="kpi-value" id="total-nis-val">₪0</div>
-      <div class="kpi-sub">טיסות, מלונות, רכב וכלל היומיות</div>
-    </div>
-    <div class="kpi-card kpi-prebook">
-      <div class="kpi-title">הזמנות מראש (ש"ח)</div>
-      <div class="kpi-value" id="prebook-nis-val">₪0</div>
-      <div class="kpi-sub">טיסות, Kolping, AVIS, 7Seasons, ביטוח</div>
-    </div>
-    <div class="kpi-card kpi-laya9191">
-      <div class="kpi-title">Laya כרטיס 9191 (ש"ח)</div>
-      <div class="kpi-value" id="laya9191-nis-val">₪0</div>
-      <div class="kpi-sub" id="laya9191-sub">512,187 Ft (56 רכישות)</div>
-    </div>
-    <div class="kpi-card kpi-laya1290">
-      <div class="kpi-title">Laya כרטיס 1290 (ש"ח)</div>
-      <div class="kpi-value" id="laya1290-nis-val">₪0</div>
-      <div class="kpi-sub" id="laya1290-sub">109,243 Ft (19 רכישות)</div>
-    </div>
-  </div>
-
-  <!-- Panel 1: Categories Overview -->
-  <div class="cat-panel">
-    <div class="panel-header">
-      <span>חלוקת הוצאות לפי קטגוריות</span>
-      <span style="font-size:0.825rem; font-weight:normal; color:var(--text-muted);">(לחץ לסינון הטבלה)</span>
-    </div>
-    <div class="category-grid" id="category-bars"></div>
-  </div>
-
-  <!-- Panel 2: Detailed Expenses Table -->
-  <div class="panel" id="table-panel">
-    <div class="controls">
-      <div class="panel-header" style="margin-bottom:0;">
-        <span>פירוט כלל ההוצאות והרכישות היומיות</span>
+  <!-- Bento Box Hero Metrics Grid -->
+  <section class="bento-hero-grid">
+    <!-- Featured 2x2 Bento Tile: Grand Total -->
+    <div class="bento-card bento-span-2 bento-featured">
+      <div>
+        <div class="bento-header-tag">
+          <span class="bento-tag-pill">סה"כ תקציב חופשה</span>
+          <span style="font-size:0.8rem; color:var(--brand-cyan);">מחושב בזמן אמת</span>
+        </div>
+        <div class="hero-amount" id="total-nis-val">₪0.00</div>
+        <p class="hero-sub">כולל טיסות, מלונות, השכרת רכב ורכישות Laya יומיות</p>
       </div>
-      
-      <div class="filter-group">
-        <select id="category-filter" class="select-input" onchange="renderTable()" aria-label="סינון לפי קטגוריה">
+
+      <div>
+        <!-- Sparkline cost split bar -->
+        <div class="cost-split-bar">
+          <div class="split-seg" id="seg-prebook" style="width: 81%; background: var(--brand-purple);" title="הזמנות מראש"></div>
+          <div class="split-seg" id="seg-laya9191" style="width: 14.8%; background: var(--brand-amber);" title="Laya 9191"></div>
+          <div class="split-seg" id="seg-laya1290" style="width: 3.2%; background: var(--brand-rose);" title="Laya 1290"></div>
+          <div class="split-seg" id="seg-direct" style="width: 1%; background: var(--brand-emerald);" title="ישיר"></div>
+        </div>
+
+        <div class="split-legend">
+          <div class="leg-item"><span class="leg-dot" style="background:var(--brand-purple);"></span> הזמנות מראש (81%)</div>
+          <div class="leg-item"><span class="leg-dot" style="background:var(--brand-amber);"></span> Laya 9191 (14.8%)</div>
+          <div class="leg-item"><span class="leg-dot" style="background:var(--brand-rose);"></span> Laya 1290 (3.2%)</div>
+          <div class="leg-item"><span class="leg-dot" style="background:var(--brand-emerald);"></span> חיוב ישיר (1%)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tile 2: Pre-booked -->
+    <div class="bento-card bento-span-1 card-purple">
+      <div class="bento-header-tag">
+        <span class="bento-metric-title">הזמנות מראש</span>
+        <span class="v-badge v-badge-hotel">Pre-booked</span>
+      </div>
+      <div class="bento-metric-val" id="prebook-nis-val">₪0</div>
+      <div class="bento-metric-footer">
+        <span>טיסות, Kolping, AVIS, 7Seasons, ביטוח</span>
+      </div>
+    </div>
+
+    <!-- Tile 3: Laya 9191 -->
+    <div class="bento-card bento-span-1 card-amber">
+      <div class="bento-header-tag">
+        <span class="bento-metric-title">Laya כרטיס 9191</span>
+        <span class="source-tag-9191">9191</span>
+      </div>
+      <div class="bento-metric-val" id="laya9191-nis-val">₪0</div>
+      <div class="bento-metric-footer">
+        <span>512,187 Ft (56 רכישות יומיות)</span>
+      </div>
+    </div>
+
+    <!-- Tile 4: Laya 1290 -->
+    <div class="bento-card bento-span-1 card-rose">
+      <div class="bento-header-tag">
+        <span class="bento-metric-title">Laya כרטיס 1290</span>
+        <span class="source-tag-1290">1290</span>
+      </div>
+      <div class="bento-metric-val" id="laya1290-nis-val">₪0</div>
+      <div class="bento-metric-footer">
+        <span>109,243 Ft (19 רכישות יומיות)</span>
+      </div>
+    </div>
+
+    <!-- Tile 5: Direct Charges -->
+    <div class="bento-card bento-span-1 card-emerald">
+      <div class="bento-header-tag">
+        <span class="bento-metric-title">חיוב ישיר / SIM</span>
+        <span class="v-badge v-badge-transport">ישיר</span>
+      </div>
+      <div class="bento-metric-val">₪309.73</div>
+      <div class="bento-metric-footer">
+        <span>SIM, תחבורה ציבורית, סיורים</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Breakdown Grid -->
+  <div class="section-title">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--brand-cyan)" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+    חלוקת הוצאות לפי קטגוריות
+  </div>
+
+  <div class="category-bento-grid" id="category-bars"></div>
+
+  <!-- Detailed Transactions Main Bento Panel -->
+  <div class="table-bento-panel" id="table-panel">
+    <div class="controls-wrapper">
+      <div class="search-row">
+        <div class="input-field-wrap">
+          <input type="text" id="search-box" class="search-input-field" placeholder="חפש בית עסק או רכישה..." oninput="renderTable()">
+        </div>
+        
+        <select id="category-filter" class="select-input-field" onchange="renderTable()">
           <option value="all">כל הקטגוריות</option>
           <option value="טיסות ותחבורה">טיסות ותחבורה</option>
           <option value="מלונות ואירוח">מלונות ואירוח</option>
@@ -618,24 +733,20 @@
           <option value="ביטוח ורומינג">ביטוח ורומינג</option>
           <option value="שונות">שונות</option>
         </select>
-
-        <div class="input-wrapper">
-          <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          <input type="text" id="search-box" class="search-input" placeholder="חפש בית עסק..." oninput="renderTable()" aria-label="חיפוש בית עסק">
-        </div>
       </div>
 
-      <div class="filter-tabs" role="tablist">
-        <button class="tab-btn active" role="tab" aria-selected="true" onclick="setSourceFilter('all', this)">הכל</button>
-        <button class="tab-btn" role="tab" aria-selected="false" onclick="setSourceFilter('9191', this)">Laya 9191</button>
-        <button class="tab-btn" role="tab" aria-selected="false" onclick="setSourceFilter('1290', this)">Laya 1290</button>
-        <button class="tab-btn" role="tab" aria-selected="false" onclick="setSourceFilter('prebook', this)">הזמנות מראש</button>
+      <!-- Segmented Control Bar -->
+      <div class="segmented-control">
+        <button class="seg-btn active" onclick="setSourceFilter('all', this)">כל אמצעי התשלום</button>
+        <button class="seg-btn" onclick="setSourceFilter('9191', this)">Laya (9191)</button>
+        <button class="seg-btn" onclick="setSourceFilter('1290', this)">Laya (1290)</button>
+        <button class="seg-btn" onclick="setSourceFilter('prebook', this)">הזמנות מראש</button>
       </div>
     </div>
 
-    <!-- Desktop Expenses Table -->
-    <div class="table-container desktop-table">
-      <table>
+    <!-- Desktop Table View -->
+    <div class="table-responsive desktop-table-view">
+      <table class="bento-table">
         <thead>
           <tr>
             <th>תאריך</th>
@@ -643,31 +754,31 @@
             <th>קטגוריה</th>
             <th>סכום במקור</th>
             <th>סכום בש"ח</th>
-            <th>אמצעי תשלום / מקור</th>
+            <th>מקור חיוב</th>
           </tr>
         </thead>
         <tbody id="expenses-table-body"></tbody>
       </table>
     </div>
 
-    <!-- Mobile Cards Expenses List -->
-    <div class="mobile-cards-list" id="mobile-expenses-list"></div>
+    <!-- Mobile Apple Card Stream -->
+    <div class="mobile-cards-container" id="mobile-expenses-list"></div>
 
-    <div class="summary-bar">
+    <div class="split-labels" style="margin-top: 1rem;">
       <span id="filtered-count">מציג 0 פריטים</span>
-      <span id="filtered-total" style="color: var(--accent-blue);">סה"כ מסונן: ₪0</span>
+      <span id="filtered-total" style="font-family:var(--font-mono); font-weight:700; color:var(--brand-cyan);">סה"כ מסונן: ₪0</span>
     </div>
   </div>
 
-  <!-- Footer Section: Major Pre-booked Breakdown -->
-  <footer class="prebook-footer" id="prebook-section">
-    <div class="panel-header">
-      <span>פירוט הזמנות מרכזיות (Pre-booked)</span>
+  <!-- Footer Master Pre-booked Reference Card -->
+  <footer class="footer-bento-card" id="prebook-section">
+    <div class="section-title" style="margin-bottom: 1.25rem;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--brand-purple)" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+      פירוט הזמנות מרכזיות (Pre-booked Master Record)
     </div>
-    
-    <!-- Desktop Table -->
-    <div class="table-container desktop-table">
-      <table>
+
+    <div class="table-responsive desktop-table-view">
+      <table class="bento-table">
         <thead>
           <tr>
             <th>פריט / ספק</th>
@@ -682,8 +793,7 @@
       </table>
     </div>
 
-    <!-- Mobile Prebook List -->
-    <div class="mobile-cards-list" id="mobile-prebook-list"></div>
+    <div class="mobile-cards-container" id="mobile-prebook-list"></div>
   </footer>
 
 </div>
@@ -1521,7 +1631,6 @@
     "source": "Laya (1290)"
   }
 ];
-
   let activeSourceFilter = 'all';
 
   function init() {
@@ -1550,11 +1659,10 @@
       }
     });
 
-    document.getElementById('total-nis-val').innerText = '₪' + totalNis.toLocaleString('he-IL', {maximumFractionDigits: 2});
+    document.getElementById('total-nis-val').innerText = '₪' + totalNis.toLocaleString('he-IL', {minimumFractionDigits: 2, maximumFractionDigits: 2});
     document.getElementById('prebook-nis-val').innerText = '₪' + prebookNis.toLocaleString('he-IL', {maximumFractionDigits: 2});
     document.getElementById('laya9191-nis-val').innerText = '₪' + laya9191Nis.toLocaleString('he-IL', {maximumFractionDigits: 2});
     document.getElementById('laya1290-nis-val').innerText = '₪' + laya1290Nis.toLocaleString('he-IL', {maximumFractionDigits: 2});
-    document.getElementById('laya1290-sub').innerText = '109,243 Ft (19 רכישות)';
   }
 
   function renderCategoryBars() {
@@ -1586,14 +1694,15 @@
       const color = colors[cat] || '#38bdf8';
 
       html += `
-        <div class="category-item" onclick="filterByCategory('${cat}')" title="לחץ לסינון הטבלה לפי ${cat}">
-          <div class="cat-meta">
-            <span>${cat}</span>
-            <span style="font-weight:600;">₪${amount.toLocaleString('he-IL', {maximumFractionDigits:0})} (${pct}%)</span>
+        <div class="cat-bento-card" onclick="filterByCategory('${cat}')">
+          <div class="cat-top-row">
+            <span class="cat-name">${cat}</span>
+            <span class="cat-val">₪${amount.toLocaleString('he-IL', {maximumFractionDigits:0})}</span>
           </div>
-          <div class="cat-bar-bg">
-            <div class="cat-bar-fill" style="width: ${pct}%; background: ${color};"></div>
+          <div class="cat-progress-bg">
+            <div class="cat-progress-fill" style="width: ${pct}%; background: ${color};"></div>
           </div>
+          <div style="font-size:0.78rem; color:var(--text-muted); margin-top:0.4rem; text-align:left;">${pct}% מתקציב הטיול</div>
         </div>
       `;
     });
@@ -1619,23 +1728,23 @@
       desktopHtml += `
         <tr>
           <td style="font-weight:600;">${i.desc}</td>
-          <td><span class="badge ${badgeClass}">${i.cat}</span></td>
+          <td><span class="v-badge ${badgeClass}">${i.cat}</span></td>
           <td>${i.origCurrency}</td>
-          <td>${origSymbol}${i.origAmount.toLocaleString()}</td>
-          <td>${i.rate.toFixed(4)}</td>
-          <td style="font-weight:600; color:var(--accent-blue);">₪${i.nisAmount.toLocaleString('he-IL', {maximumFractionDigits:2})}</td>
+          <td style="font-family:var(--font-mono);">${origSymbol}${i.origAmount.toLocaleString()}</td>
+          <td style="font-family:var(--font-mono);">${i.rate.toFixed(4)}</td>
+          <td class="table-price" style="color:var(--brand-cyan);">₪${i.nisAmount.toLocaleString('he-IL', {maximumFractionDigits:2})}</td>
         </tr>
       `;
 
       mobileHtml += `
-        <div class="m-card">
-          <div class="m-card-header">
-            <span class="m-card-title">${i.desc}</span>
-            <span class="m-card-price">₪${i.nisAmount.toLocaleString('he-IL', {maximumFractionDigits:2})}</span>
+        <div class="m-bento-card">
+          <div class="m-bento-top">
+            <span class="m-bento-title">${i.desc}</span>
+            <span class="m-bento-price">₪${i.nisAmount.toLocaleString('he-IL', {maximumFractionDigits:2})}</span>
           </div>
-          <div class="m-card-meta">
-            <span class="badge ${badgeClass}">${i.cat}</span>
-            <span class="m-card-sub">${origSymbol}${i.origAmount.toLocaleString()} ${i.origCurrency}</span>
+          <div class="m-bento-bot">
+            <span class="v-badge ${badgeClass}">${i.cat}</span>
+            <span>${origSymbol}${i.origAmount.toLocaleString()} ${i.origCurrency}</span>
           </div>
         </div>
       `;
@@ -1646,26 +1755,22 @@
   }
 
   function getBadgeClass(cat) {
-    if (cat === 'טיסות ותחבורה') return 'badge-flight';
-    if (cat === 'מלונות ואירוח') return 'badge-hotel';
-    if (cat === 'ביגוד והנעלה') return 'badge-clothing';
-    if (cat === 'מסעדות ובתי קפה') return 'badge-food';
-    if (cat === 'אטרקציות ובילויים') return 'badge-attraction';
-    if (cat === 'תחבורה, דלק וחניה') return 'badge-transport';
-    if (cat === 'סופרמרקט ומזון') return 'badge-supermarket';
-    if (cat === 'פארם וחנויות נוחות') return 'badge-pharmacy';
-    if (cat === 'ביטוח ורומינג') return 'badge-insurance';
-    return 'badge-other';
+    if (cat === 'טיסות ותחבורה') return 'v-badge-flight';
+    if (cat === 'מלונות ואירוח') return 'v-badge-hotel';
+    if (cat === 'ביגוד והנעלה') return 'v-badge-clothing';
+    if (cat === 'מסעדות ובתי קפה') return 'v-badge-food';
+    if (cat === 'אטרקציות ובילויים') return 'v-badge-attraction';
+    if (cat === 'תחבורה, דלק וחניה') return 'v-badge-transport';
+    if (cat === 'סופרמרקט ומזון') return 'v-badge-supermarket';
+    if (cat === 'פארם וחנויות נוחות') return 'v-badge-pharmacy';
+    if (cat === 'ביטוח ורומינג') return 'v-badge-insurance';
+    return 'v-badge-other';
   }
 
   function setSourceFilter(type, btn) {
     activeSourceFilter = type;
-    document.querySelectorAll('.tab-btn').forEach(b => {
-      b.classList.remove('active');
-      b.setAttribute('aria-selected', 'false');
-    });
+    document.querySelectorAll('.seg-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    btn.setAttribute('aria-selected', 'true');
     renderTable();
   }
 
@@ -1695,32 +1800,32 @@
       const origStr = i.origCurrency === 'NIS' ? '-' : `${i.origAmount.toLocaleString()} ${i.origCurrency}`;
       
       let tagHtml = i.source;
-      if (i.source.includes('9191')) tagHtml = `<span class="tag-laya9191">Laya (9191)</span>`;
-      else if (i.source.includes('1290')) tagHtml = `<span class="tag-laya1290">Laya (1290)</span>`;
+      if (i.source.includes('9191')) tagHtml = `<span class="source-tag-9191">Laya (9191)</span>`;
+      else if (i.source.includes('1290')) tagHtml = `<span class="source-tag-1290">Laya (1290)</span>`;
 
       desktopHtml += `
         <tr>
           <td>${i.date}</td>
           <td style="font-weight:500;">${i.desc}</td>
-          <td><span class="badge ${badgeClass}">${i.cat}</span></td>
-          <td>${origStr}</td>
-          <td style="font-weight:600;">₪${i.nisAmount.toLocaleString('he-IL', {maximumFractionDigits:2})}</td>
+          <td><span class="v-badge ${badgeClass}">${i.cat}</span></td>
+          <td style="font-family:var(--font-mono);">${origStr}</td>
+          <td class="table-price">₪${i.nisAmount.toLocaleString('he-IL', {maximumFractionDigits:2})}</td>
           <td>${tagHtml}</td>
         </tr>
       `;
 
       mobileHtml += `
-        <div class="m-card">
-          <div class="m-card-header">
-            <span class="m-card-title">${i.desc}</span>
-            <span class="m-card-price">₪${i.nisAmount.toLocaleString('he-IL', {maximumFractionDigits:2})}</span>
+        <div class="m-bento-card">
+          <div class="m-bento-top">
+            <span class="m-bento-title">${i.desc}</span>
+            <span class="m-bento-price">₪${i.nisAmount.toLocaleString('he-IL', {maximumFractionDigits:2})}</span>
           </div>
-          <div class="m-card-meta">
-            <div class="m-card-tags">
-              <span class="badge ${badgeClass}">${i.cat}</span>
+          <div class="m-bento-bot">
+            <div style="display:flex; gap:0.35rem; align-items:center;">
+              <span class="v-badge ${badgeClass}">${i.cat}</span>
               ${tagHtml}
             </div>
-            <span class="m-card-sub">${i.date} ${origStr !== '-' ? '| ' + origStr : ''}</span>
+            <span>${i.date} ${origStr !== '-' ? '| ' + origStr : ''}</span>
           </div>
         </div>
       `;
@@ -1730,7 +1835,7 @@
     document.getElementById('mobile-expenses-list').innerHTML = mobileHtml;
 
     document.getElementById('filtered-count').innerText = `מציג ${filtered.length} פריטים`;
-    document.getElementById('filtered-total').innerText = `סה"כ מסונן: ₪${filteredSum.toLocaleString('he-IL', {maximumFractionDigits:2})}`;
+    document.getElementById('filtered-total').innerText = `סה"כ מסונן: ₪${filteredSum.toLocaleString('he-IL', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
   }
 
   window.onload = init;
