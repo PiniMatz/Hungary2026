@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>הונגריה 2026 | דוח הוצאות חופשה</title>
+  <title>הונגריה 2026 | סיכום הוצאות חופשה</title>
   
   <!-- UI-UX Pro Max Fonts: Fira Code (Monospace stats) + Lexend + Rubik -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -112,6 +112,19 @@
       border-radius: 9999px;
       font-size: 0.825rem;
       font-weight: 500;
+    }
+
+    .badge-grounded {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
     }
 
     .print-btn {
@@ -546,6 +559,7 @@
 
     .source-tag-9191 { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.3); padding: 0.2rem 0.5rem; border-radius: 6px; font-weight: 600; font-size: 0.78rem; }
     .source-tag-1290 { background: rgba(244, 63, 94, 0.15); color: #f43f5e; border: 1px solid rgba(244, 63, 94, 0.3); padding: 0.2rem 0.5rem; border-radius: 6px; font-weight: 600; font-size: 0.78rem; }
+    .source-tag-max { background: rgba(99, 102, 241, 0.15); color: #818cf8; border: 1px solid rgba(99, 102, 241, 0.3); padding: 0.2rem 0.5rem; border-radius: 6px; font-weight: 600; font-size: 0.78rem; }
 
     /* Footer Reference Card */
     .footer-bento-card {
@@ -614,7 +628,13 @@
     <div class="brand-title">
       <span class="flag-pill">🇭🇺</span>
       <div>
-        <h1>הונגריה 2026</h1>
+        <div style="display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap;">
+          <h1>הונגריה 2026</h1>
+          <span class="badge-grounded">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            מבוסס נתוני פרויקט מאומתים
+          </span>
+        </div>
         <span class="badge-date">13 - 23 אוגוסט 2026 | בודפשט & אגם בלטון</span>
       </div>
     </div>
@@ -631,26 +651,26 @@
       <div>
         <div class="bento-header-tag">
           <span class="bento-tag-pill">סה"כ תקציב חופשה</span>
-          <span style="font-size:0.8rem; color:var(--brand-cyan);">מחושב בזמן אמת</span>
+          <span style="font-size:0.8rem; color:var(--brand-cyan);">מחושב מתוך מסד הנתונים</span>
         </div>
         <div class="hero-amount" id="total-nis-val">₪0.00</div>
-        <p class="hero-sub">כולל טיסות, מלונות, השכרת רכב ורכישות Laya יומיות</p>
+        <p class="hero-sub">כולל טיסות, 7Seasons, AVIS, Kolping, ביטוחים, מט"ח מזומן ורכישות Laya יומיות</p>
       </div>
 
       <div>
         <!-- Sparkline cost split bar -->
         <div class="cost-split-bar">
-          <div class="split-seg" id="seg-prebook" style="width: 81%; background: var(--brand-purple);" title="הזמנות מראש"></div>
-          <div class="split-seg" id="seg-laya9191" style="width: 14.8%; background: var(--brand-amber);" title="Laya 9191"></div>
-          <div class="split-seg" id="seg-laya1290" style="width: 3.2%; background: var(--brand-rose);" title="Laya 1290"></div>
-          <div class="split-seg" id="seg-direct" style="width: 1%; background: var(--brand-emerald);" title="ישיר"></div>
+          <div class="split-seg" id="seg-prebook" style="width: 79.9%; background: var(--brand-purple);" title="הזמנות מרכזיות ולינה"></div>
+          <div class="split-seg" id="seg-laya9191" style="width: 14.3%; background: var(--brand-amber);" title="Laya 9191"></div>
+          <div class="split-seg" id="seg-laya1290" style="width: 3.1%; background: var(--brand-rose);" title="Laya 1290"></div>
+          <div class="split-seg" id="seg-direct" style="width: 2.7%; background: var(--brand-emerald);" title="ישיר / מזומן / טיסה"></div>
         </div>
 
         <div class="split-legend">
-          <div class="leg-item"><span class="leg-dot" style="background:var(--brand-purple);"></span> הזמנות מראש (81%)</div>
-          <div class="leg-item"><span class="leg-dot" style="background:var(--brand-amber);"></span> Laya 9191 (14.8%)</div>
-          <div class="leg-item"><span class="leg-dot" style="background:var(--brand-rose);"></span> Laya 1290 (3.2%)</div>
-          <div class="leg-item"><span class="leg-dot" style="background:var(--brand-emerald);"></span> חיוב ישיר (1%)</div>
+          <div class="leg-item"><span class="leg-dot" style="background:var(--brand-purple);"></span> הזמנות מרכזיות (79.9%)</div>
+          <div class="leg-item"><span class="leg-dot" style="background:var(--brand-amber);"></span> Laya 9191 (14.3%)</div>
+          <div class="leg-item"><span class="leg-dot" style="background:var(--brand-rose);"></span> Laya 1290 (3.1%)</div>
+          <div class="leg-item"><span class="leg-dot" style="background:var(--brand-emerald);"></span> חיוב ישיר / מזומן (2.7%)</div>
         </div>
       </div>
     </div>
@@ -658,12 +678,12 @@
     <!-- Tile 2: Pre-booked -->
     <div class="bento-card bento-span-1 card-purple">
       <div class="bento-header-tag">
-        <span class="bento-metric-title">הזמנות מראש</span>
-        <span class="v-badge v-badge-hotel">Pre-booked</span>
+        <span class="bento-metric-title">הזמנות מרכזיות</span>
+        <span class="v-badge v-badge-hotel">מאומת</span>
       </div>
       <div class="bento-metric-val" id="prebook-nis-val">₪0</div>
       <div class="bento-metric-footer">
-        <span>טיסות, Kolping, AVIS, 7Seasons, ביטוח</span>
+        <span>טיסות, 7Seasons, AVIS, Kolping, ביטוח</span>
       </div>
     </div>
 
@@ -675,7 +695,7 @@
       </div>
       <div class="bento-metric-val" id="laya9191-nis-val">₪0</div>
       <div class="bento-metric-footer">
-        <span>512,187 Ft (56 רכישות יומיות)</span>
+        <span>512,187 Ft (56 רכישות, שער 0.008945)</span>
       </div>
     </div>
 
@@ -687,19 +707,19 @@
       </div>
       <div class="bento-metric-val" id="laya1290-nis-val">₪0</div>
       <div class="bento-metric-footer">
-        <span>109,243 Ft (19 רכישות יומיות)</span>
+        <span>109,243 Ft (19 רכישות, שער 0.008984)</span>
       </div>
     </div>
 
     <!-- Tile 5: Direct Charges -->
     <div class="bento-card bento-span-1 card-emerald">
       <div class="bento-header-tag">
-        <span class="bento-metric-title">חיוב ישיר / SIM</span>
+        <span class="bento-metric-title">ישיר / מזומן / נתב"ג</span>
         <span class="v-badge v-badge-transport">ישיר</span>
       </div>
-      <div class="bento-metric-val">₪309.73</div>
+      <div class="bento-metric-val">₪1,004.91</div>
       <div class="bento-metric-footer">
-        <span>SIM, תחבורה ציבורית, סיורים</span>
+        <span>מזומן בנה"פ, SIM, נתב"ג T1, תחבורה וסיורים</span>
       </div>
     </div>
   </section>
@@ -740,7 +760,7 @@
         <button class="seg-btn active" onclick="setSourceFilter('all', this)">כל אמצעי התשלום</button>
         <button class="seg-btn" onclick="setSourceFilter('9191', this)">Laya (9191)</button>
         <button class="seg-btn" onclick="setSourceFilter('1290', this)">Laya (1290)</button>
-        <button class="seg-btn" onclick="setSourceFilter('prebook', this)">הזמנות מראש</button>
+        <button class="seg-btn" onclick="setSourceFilter('prebook', this)">הזמנות מרכזיות</button>
       </div>
     </div>
 
@@ -774,7 +794,7 @@
   <footer class="footer-bento-card" id="prebook-section">
     <div class="section-title" style="margin-bottom: 1.25rem;">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--brand-purple)" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
-      פירוט הזמנות מרכזיות (Pre-booked Master Record)
+      פירוט הזמנות מרכזיות מאומתות (Pre-booked Master Record)
     </div>
 
     <div class="table-responsive desktop-table-view">
@@ -787,6 +807,7 @@
             <th>סכום במקור</th>
             <th>שער המרה</th>
             <th>סכום בש"ח</th>
+            <th>מקור אימות</th>
           </tr>
         </thead>
         <tbody id="prebook-table-body"></tbody>
@@ -801,68 +822,118 @@
 <script>
   const expensesData = [
   {
-    "date": "Pre-booked",
-    "desc": "כרטיסי טיסה (Plane Tickets)",
+    "date": "2026-01-11",
+    "desc": "כרטיסי טיסה (ארקיע + ישראייר TLV-BUD)",
     "cat": "טיסות ותחבורה",
     "origCurrency": "NIS",
     "origAmount": 7426.77,
     "rate": 1,
     "nisAmount": 7426.77,
-    "source": "הזמנה מראש (ש\"ח)"
+    "source": "מקס (חיוב חשבון מזרחי)"
   },
   {
-    "date": "Pre-booked",
-    "desc": "Kolping Hotel (Reservation)",
+    "date": "2026-08-16",
+    "desc": "Kolping Family Resort (הזמנה RS2-009197 חצי פנסיון)",
     "cat": "מלונות ואירוח",
     "origCurrency": "EUR",
     "origAmount": 2688,
     "rate": 4.05,
     "nisAmount": 10886.4,
-    "source": "הזמנה מראש (יורו)"
+    "source": "מקס (€2,688 / מתוכם ₪4,631 חויב בכרטיס)"
   },
   {
-    "date": "Pre-booked",
-    "desc": "AVIS Car Rental",
-    "cat": "תחבורה, דלק וחניה",
-    "origCurrency": "EUR",
-    "origAmount": 593.99,
-    "rate": 4.05,
-    "nisAmount": 2405.66,
-    "source": "הזמנה מראש (יורו)"
-  },
-  {
-    "date": "Pre-booked",
-    "desc": "7Seasons Apartment Hotel",
+    "date": "2026-08-21",
+    "desc": "7Seasons Apartments Budapest (הזמנה SPAGMW)",
     "cat": "מלונות ואירוח",
     "origCurrency": "HUF",
     "origAmount": 469659,
-    "rate": 0.008984,
-    "nisAmount": 4219.42,
-    "source": "הזמנה מראש (פורינט)"
+    "rate": 0.010103245120395862,
+    "nisAmount": 4745.08,
+    "source": "מקס (חיוב חשבון מזרחי)"
+  },
+  {
+    "date": "2026-08-23",
+    "desc": "AVIS השכרת רכב (הזמנה 15687388IL3)",
+    "cat": "תחבורה, דלק וחניה",
+    "origCurrency": "EUR",
+    "origAmount": 593.99,
+    "rate": 3.631912995168269,
+    "nisAmount": 2157.32,
+    "source": "מקס (חיוב חשבון מזרחי)"
   },
   {
     "date": "2026-05-23",
-    "desc": "CarRentals Insurance (RENTALCOVER.COM)",
+    "desc": "RentalCover.com (ביטוח ביטול השתתפות עצמית לרכב)",
     "cat": "ביטוח ורומינג",
     "origCurrency": "USD",
     "origAmount": 54.89,
-    "rate": 2.936,
+    "rate": 2.936053926033886,
     "nisAmount": 161.16,
     "source": "מקס (3893)"
   },
   {
-    "date": "2026-08-19",
-    "desc": "WORLD 8 (SIM / Roaming)",
+    "date": "2026-07-23",
+    "desc": "AIG ביטוח נסיעות חו\"ל (ביטוח רפואי משפחתי)",
+    "cat": "ביטוח ורומינג",
+    "origCurrency": "NIS",
+    "origAmount": 221.36,
+    "rate": 1,
+    "nisAmount": 221.36,
+    "source": "מקס (3893)"
+  },
+  {
+    "date": "2026-08-12",
+    "desc": "בנה\"פ - הזמנת מזומן מט\"ח לטיול",
+    "cat": "שונות",
+    "origCurrency": "NIS",
+    "origAmount": 374.13,
+    "rate": 1,
+    "nisAmount": 374.13,
+    "source": "ישראכרט (9191)"
+  },
+  {
+    "date": "2026-08-13",
+    "desc": "אילנס טרמינל 1 מערבי (נתב\"ג המראה)",
+    "cat": "מסעדות ובתי קפה",
+    "origCurrency": "NIS",
+    "origAmount": 38,
+    "rate": 1,
+    "nisAmount": 38,
+    "source": "ישראכרט (9191)"
+  },
+  {
+    "date": "2026-08-13",
+    "desc": "סטימצקי טרמינל 1 נתב\"ג (חוברות/ספרים לטיסה)",
+    "cat": "אטרקציות ובילויים",
+    "origCurrency": "NIS",
+    "origAmount": 83.05,
+    "rate": 1,
+    "nisAmount": 83.05,
+    "source": "מאסטרקארד (1290)"
+  },
+  {
+    "date": "2026-08-13",
+    "desc": "WORLD 8 (כרטיס SIM 1 חו\"ל)",
     "cat": "ביטוח ורומינג",
     "origCurrency": "NIS",
     "origAmount": 99,
     "rate": 1,
     "nisAmount": 99,
-    "source": "כרטיס (1290/9191)"
+    "source": "ישראכרט (9191)"
+  },
+  {
+    "date": "2026-08-19",
+    "desc": "WORLD 8 (כרטיס SIM 2 חו\"ל)",
+    "cat": "ביטוח ורומינג",
+    "origCurrency": "NIS",
+    "origAmount": 99,
+    "rate": 1,
+    "nisAmount": 99,
+    "source": "ישראכרט (9191)"
   },
   {
     "date": "2026-08-20",
-    "desc": "SIMPLEP BUDAPESTGO A (תחבורה ציבורית)",
+    "desc": "SIMPLEP BUDAPESTGO A (תחבורה ציבורית בודפשט)",
     "cat": "תחבורה, דלק וחניה",
     "origCurrency": "NIS",
     "origAmount": 19,
@@ -872,7 +943,7 @@
   },
   {
     "date": "2026-08-22",
-    "desc": "ALLGO GUIDED TOURS B (סיורים מודרכים)",
+    "desc": "ALLGO GUIDED TOURS B (סיורים מודרכים בודפשט)",
     "cat": "אטרקציות ובילויים",
     "origCurrency": "NIS",
     "origAmount": 191.73,
@@ -886,8 +957,8 @@
     "cat": "תחבורה, דלק וחניה",
     "origCurrency": "HUF",
     "origAmount": 569,
-    "rate": 0.008984,
-    "nisAmount": 5.11,
+    "rate": 0.008945150892154623,
+    "nisAmount": 5.09,
     "source": "Laya (9191)"
   },
   {
@@ -896,8 +967,8 @@
     "cat": "פארם וחנויות נוחות",
     "origCurrency": "HUF",
     "origAmount": 3980,
-    "rate": 0.008984,
-    "nisAmount": 35.76,
+    "rate": 0.008945150892154623,
+    "nisAmount": 35.6,
     "source": "Laya (9191)"
   },
   {
@@ -906,8 +977,8 @@
     "cat": "מסעדות ובתי קפה",
     "origCurrency": "HUF",
     "origAmount": 14860,
-    "rate": 0.008984,
-    "nisAmount": 133.5,
+    "rate": 0.008945150892154623,
+    "nisAmount": 132.92,
     "source": "Laya (9191)"
   },
   {
@@ -916,8 +987,8 @@
     "cat": "אטרקציות ובילויים",
     "origCurrency": "HUF",
     "origAmount": 17100,
-    "rate": 0.008984,
-    "nisAmount": 153.63,
+    "rate": 0.008945150892154623,
+    "nisAmount": 152.96,
     "source": "Laya (9191)"
   },
   {
@@ -926,8 +997,8 @@
     "cat": "ביגוד והנעלה",
     "origCurrency": "HUF",
     "origAmount": 18000,
-    "rate": 0.008984,
-    "nisAmount": 161.71,
+    "rate": 0.008945150892154623,
+    "nisAmount": 161.01,
     "source": "Laya (9191)"
   },
   {
@@ -936,8 +1007,8 @@
     "cat": "מסעדות ובתי קפה",
     "origCurrency": "HUF",
     "origAmount": 8470,
-    "rate": 0.008984,
-    "nisAmount": 76.09,
+    "rate": 0.008945150892154623,
+    "nisAmount": 75.77,
     "source": "Laya (9191)"
   },
   {
@@ -946,8 +1017,8 @@
     "cat": "אטרקציות ובילויים",
     "origCurrency": "HUF",
     "origAmount": 9500,
-    "rate": 0.008984,
-    "nisAmount": 85.35,
+    "rate": 0.008945150892154623,
+    "nisAmount": 84.98,
     "source": "Laya (9191)"
   },
   {
@@ -956,8 +1027,8 @@
     "cat": "מסעדות ובתי קפה",
     "origCurrency": "HUF",
     "origAmount": 3000,
-    "rate": 0.008984,
-    "nisAmount": 26.95,
+    "rate": 0.008945150892154623,
+    "nisAmount": 26.84,
     "source": "Laya (9191)"
   },
   {
@@ -966,8 +1037,8 @@
     "cat": "מסעדות ובתי קפה",
     "origCurrency": "HUF",
     "origAmount": 2300,
-    "rate": 0.008984,
-    "nisAmount": 20.66,
+    "rate": 0.008945150892154623,
+    "nisAmount": 20.57,
     "source": "Laya (9191)"
   },
   {
@@ -976,8 +1047,8 @@
     "cat": "אטרקציות ובילויים",
     "origCurrency": "HUF",
     "origAmount": 6400,
-    "rate": 0.008984,
-    "nisAmount": 57.5,
+    "rate": 0.008945150892154623,
+    "nisAmount": 57.25,
     "source": "Laya (9191)"
   },
   {
@@ -986,8 +1057,8 @@
     "cat": "ביגוד והנעלה",
     "origCurrency": "HUF",
     "origAmount": 32560,
-    "rate": 0.008984,
-    "nisAmount": 292.52,
+    "rate": 0.008945150892154623,
+    "nisAmount": 291.25,
     "source": "Laya (9191)"
   },
   {
@@ -996,8 +1067,8 @@
     "cat": "מסעדות ובתי קפה",
     "origCurrency": "HUF",
     "origAmount": 9166,
-    "rate": 0.008984,
-    "nisAmount": 82.35,
+    "rate": 0.008945150892154623,
+    "nisAmount": 81.99,
     "source": "Laya (9191)"
   },
   {
@@ -1006,8 +1077,8 @@
     "cat": "מסעדות ובתי קפה",
     "origCurrency": "HUF",
     "origAmount": 400,
-    "rate": 0.008984,
-    "nisAmount": 3.59,
+    "rate": 0.008945150892154623,
+    "nisAmount": 3.58,
     "source": "Laya (9191)"
   },
   {
@@ -1016,8 +1087,8 @@
     "cat": "סופרמרקט ומזון",
     "origCurrency": "HUF",
     "origAmount": 3203,
-    "rate": 0.008984,
-    "nisAmount": 28.78,
+    "rate": 0.008945150892154623,
+    "nisAmount": 28.65,
     "source": "Laya (9191)"
   },
   {
@@ -1026,8 +1097,8 @@
     "cat": "אטרקציות ובילויים",
     "origCurrency": "HUF",
     "origAmount": 33011,
-    "rate": 0.008984,
-    "nisAmount": 296.57,
+    "rate": 0.008945150892154623,
+    "nisAmount": 295.29,
     "source": "Laya (9191)"
   },
   {
@@ -1036,8 +1107,8 @@
     "cat": "אטרקציות ובילויים",
     "origCurrency": "HUF",
     "origAmount": 30950,
-    "rate": 0.008984,
-    "nisAmount": 278.05,
+    "rate": 0.008945150892154623,
+    "nisAmount": 276.85,
     "source": "Laya (9191)"
   },
   {
@@ -1046,8 +1117,8 @@
     "cat": "שונות",
     "origCurrency": "HUF",
     "origAmount": 4500,
-    "rate": 0.008984,
-    "nisAmount": 40.43,
+    "rate": 0.008945150892154623,
+    "nisAmount": 40.25,
     "source": "Laya (9191)"
   },
   {
@@ -1056,8 +1127,8 @@
     "cat": "תחבורה, דלק וחניה",
     "origCurrency": "HUF",
     "origAmount": 6900,
-    "rate": 0.008984,
-    "nisAmount": 61.99,
+    "rate": 0.008945150892154623,
+    "nisAmount": 61.72,
     "source": "Laya (9191)"
   },
   {
@@ -1066,8 +1137,8 @@
     "cat": "מסעדות ובתי קפה",
     "origCurrency": "HUF",
     "origAmount": 3500,
-    "rate": 0.008984,
-    "nisAmount": 31.44,
+    "rate": 0.008945150892154623,
+    "nisAmount": 31.31,
     "source": "Laya (9191)"
   },
   {
@@ -1076,8 +1147,8 @@
     "cat": "שונות",
     "origCurrency": "HUF",
     "origAmount": 2400,
-    "rate": 0.008984,
-    "nisAmount": 21.56,
+    "rate": 0.008945150892154623,
+    "nisAmount": 21.47,
     "source": "Laya (9191)"
   },
   {
@@ -1086,8 +1157,8 @@
     "cat": "מסעדות ובתי קפה",
     "origCurrency": "HUF",
     "origAmount": 10900,
-    "rate": 0.008984,
-    "nisAmount": 97.93,
+    "rate": 0.008945150892154623,
+    "nisAmount": 97.5,
     "source": "Laya (9191)"
   },
   {
@@ -1096,8 +1167,8 @@
     "cat": "מסעדות ובתי קפה",
     "origCurrency": "HUF",
     "origAmount": 6820,
-    "rate": 0.008984,
-    "nisAmount": 61.27,
+    "rate": 0.008945150892154623,
+    "nisAmount": 61.01,
     "source": "Laya (9191)"
   },
   {
@@ -1106,8 +1177,8 @@
     "cat": "מסעדות ובתי קפה",
     "origCurrency": "HUF",
     "origAmount": 3700,
-    "rate": 0.008984,
-    "nisAmount": 33.24,
+    "rate": 0.008945150892154623,
+    "nisAmount": 33.1,
     "source": "Laya (9191)"
   },
   {
@@ -1116,8 +1187,8 @@
     "cat": "מסעדות ובתי קפה",
     "origCurrency": "HUF",
     "origAmount": 5400,
-    "rate": 0.008984,
-    "nisAmount": 48.51,
+    "rate": 0.008945150892154623,
+    "nisAmount": 48.3,
     "source": "Laya (9191)"
   },
   {
@@ -1126,8 +1197,8 @@
     "cat": "אטרקציות ובילויים",
     "origCurrency": "HUF",
     "origAmount": 17600,
-    "rate": 0.008984,
-    "nisAmount": 158.12,
+    "rate": 0.008945150892154623,
+    "nisAmount": 157.43,
     "source": "Laya (9191)"
   },
   {
@@ -1136,8 +1207,8 @@
     "cat": "מסעדות ובתי קפה",
     "origCurrency": "HUF",
     "origAmount": 7337,
-    "rate": 0.008984,
-    "nisAmount": 65.92,
+    "rate": 0.008945150892154623,
+    "nisAmount": 65.63,
     "source": "Laya (9191)"
   },
   {
@@ -1146,8 +1217,8 @@
     "cat": "תחבורה, דלק וחניה",
     "origCurrency": "HUF",
     "origAmount": 8788,
-    "rate": 0.008984,
-    "nisAmount": 78.95,
+    "rate": 0.008945150892154623,
+    "nisAmount": 78.61,
     "source": "Laya (9191)"
   },
   {
@@ -1156,8 +1227,8 @@
     "cat": "תחבורה, דלק וחניה",
     "origCurrency": "HUF",
     "origAmount": 3390,
-    "rate": 0.008984,
-    "nisAmount": 30.46,
+    "rate": 0.008945150892154623,
+    "nisAmount": 30.32,
     "source": "Laya (9191)"
   },
   {
@@ -1166,8 +1237,8 @@
     "cat": "אטרקציות ובילויים",
     "origCurrency": "HUF",
     "origAmount": 2598,
-    "rate": 0.008984,
-    "nisAmount": 23.34,
+    "rate": 0.008945150892154623,
+    "nisAmount": 23.24,
     "source": "Laya (9191)"
   },
   {
@@ -1176,8 +1247,8 @@
     "cat": "אטרקציות ובילויים",
     "origCurrency": "HUF",
     "origAmount": 6999,
-    "rate": 0.008984,
-    "nisAmount": 62.88,
+    "rate": 0.008945150892154623,
+    "nisAmount": 62.61,
     "source": "Laya (9191)"
   },
   {
@@ -1186,8 +1257,8 @@
     "cat": "אטרקציות ובילויים",
     "origCurrency": "HUF",
     "origAmount": 8194,
-    "rate": 0.008984,
-    "nisAmount": 73.61,
+    "rate": 0.008945150892154623,
+    "nisAmount": 73.3,
     "source": "Laya (9191)"
   },
   {
@@ -1196,8 +1267,8 @@
     "cat": "תחבורה, דלק וחניה",
     "origCurrency": "HUF",
     "origAmount": 29866,
-    "rate": 0.008984,
-    "nisAmount": 268.32,
+    "rate": 0.008945150892154623,
+    "nisAmount": 267.16,
     "source": "Laya (9191)"
   },
   {
@@ -1206,8 +1277,8 @@
     "cat": "מלונות ואירוח",
     "origCurrency": "HUF",
     "origAmount": 35350,
-    "rate": 0.008984,
-    "nisAmount": 317.58,
+    "rate": 0.008945150892154623,
+    "nisAmount": 316.21,
     "source": "Laya (9191)"
   },
   {
@@ -1216,8 +1287,8 @@
     "cat": "מסעדות ובתי קפה",
     "origCurrency": "HUF",
     "origAmount": 840,
-    "rate": 0.008984,
-    "nisAmount": 7.55,
+    "rate": 0.008945150892154623,
+    "nisAmount": 7.51,
     "source": "Laya (9191)"
   },
   {
@@ -1226,8 +1297,8 @@
     "cat": "מסעדות ובתי קפה",
     "origCurrency": "HUF",
     "origAmount": 4650,
-    "rate": 0.008984,
-    "nisAmount": 41.78,
+    "rate": 0.008945150892154623,
+    "nisAmount": 41.59,
     "source": "Laya (9191)"
   },
   {
@@ -1236,8 +1307,8 @@
     "cat": "מסעדות ובתי קפה",
     "origCurrency": "HUF",
     "origAmount": 2400,
-    "rate": 0.008984,
-    "nisAmount": 21.56,
+    "rate": 0.008945150892154623,
+    "nisAmount": 21.47,
     "source": "Laya (9191)"
   },
   {
@@ -1246,8 +1317,8 @@
     "cat": "אטרקציות ובילויים",
     "origCurrency": "HUF",
     "origAmount": 26730,
-    "rate": 0.008984,
-    "nisAmount": 240.14,
+    "rate": 0.008945150892154623,
+    "nisAmount": 239.1,
     "source": "Laya (9191)"
   },
   {
@@ -1256,8 +1327,8 @@
     "cat": "תחבורה, דלק וחניה",
     "origCurrency": "HUF",
     "origAmount": 1733,
-    "rate": 0.008984,
-    "nisAmount": 15.57,
+    "rate": 0.008945150892154623,
+    "nisAmount": 15.5,
     "source": "Laya (9191)"
   },
   {
@@ -1266,8 +1337,8 @@
     "cat": "אטרקציות ובילויים",
     "origCurrency": "HUF",
     "origAmount": 2800,
-    "rate": 0.008984,
-    "nisAmount": 25.16,
+    "rate": 0.008945150892154623,
+    "nisAmount": 25.05,
     "source": "Laya (9191)"
   },
   {
@@ -1276,8 +1347,8 @@
     "cat": "תחבורה, דלק וחניה",
     "origCurrency": "HUF",
     "origAmount": 1000,
-    "rate": 0.008984,
-    "nisAmount": 8.98,
+    "rate": 0.008945150892154623,
+    "nisAmount": 8.95,
     "source": "Laya (9191)"
   },
   {
@@ -1286,8 +1357,8 @@
     "cat": "אטרקציות ובילויים",
     "origCurrency": "HUF",
     "origAmount": 25729,
-    "rate": 0.008984,
-    "nisAmount": 231.15,
+    "rate": 0.008945150892154623,
+    "nisAmount": 230.15,
     "source": "Laya (9191)"
   },
   {
@@ -1296,8 +1367,8 @@
     "cat": "אטרקציות ובילויים",
     "origCurrency": "HUF",
     "origAmount": 11500,
-    "rate": 0.008984,
-    "nisAmount": 103.32,
+    "rate": 0.008945150892154623,
+    "nisAmount": 102.87,
     "source": "Laya (9191)"
   },
   {
@@ -1306,8 +1377,8 @@
     "cat": "אטרקציות ובילויים",
     "origCurrency": "HUF",
     "origAmount": 8000,
-    "rate": 0.008984,
-    "nisAmount": 71.87,
+    "rate": 0.008945150892154623,
+    "nisAmount": 71.56,
     "source": "Laya (9191)"
   },
   {
@@ -1316,8 +1387,8 @@
     "cat": "סופרמרקט ומזון",
     "origCurrency": "HUF",
     "origAmount": 1796,
-    "rate": 0.008984,
-    "nisAmount": 16.14,
+    "rate": 0.008945150892154623,
+    "nisAmount": 16.07,
     "source": "Laya (9191)"
   },
   {
@@ -1326,8 +1397,8 @@
     "cat": "סופרמרקט ומזון",
     "origCurrency": "HUF",
     "origAmount": 4832,
-    "rate": 0.008984,
-    "nisAmount": 43.41,
+    "rate": 0.008945150892154623,
+    "nisAmount": 43.22,
     "source": "Laya (9191)"
   },
   {
@@ -1336,8 +1407,8 @@
     "cat": "מסעדות ובתי קפה",
     "origCurrency": "HUF",
     "origAmount": 2100,
-    "rate": 0.008984,
-    "nisAmount": 18.87,
+    "rate": 0.008945150892154623,
+    "nisAmount": 18.78,
     "source": "Laya (9191)"
   },
   {
@@ -1346,8 +1417,8 @@
     "cat": "מסעדות ובתי קפה",
     "origCurrency": "HUF",
     "origAmount": 3300,
-    "rate": 0.008984,
-    "nisAmount": 29.65,
+    "rate": 0.008945150892154623,
+    "nisAmount": 29.52,
     "source": "Laya (9191)"
   },
   {
@@ -1356,8 +1427,8 @@
     "cat": "מסעדות ובתי קפה",
     "origCurrency": "HUF",
     "origAmount": 6990,
-    "rate": 0.008984,
-    "nisAmount": 62.8,
+    "rate": 0.008945150892154623,
+    "nisAmount": 62.53,
     "source": "Laya (9191)"
   },
   {
@@ -1366,8 +1437,8 @@
     "cat": "תחבורה, דלק וחניה",
     "origCurrency": "HUF",
     "origAmount": 1075,
-    "rate": 0.008984,
-    "nisAmount": 9.66,
+    "rate": 0.008945150892154623,
+    "nisAmount": 9.62,
     "source": "Laya (9191)"
   },
   {
@@ -1376,8 +1447,8 @@
     "cat": "תחבורה, דלק וחניה",
     "origCurrency": "HUF",
     "origAmount": 1110,
-    "rate": 0.008984,
-    "nisAmount": 9.97,
+    "rate": 0.008945150892154623,
+    "nisAmount": 9.93,
     "source": "Laya (9191)"
   },
   {
@@ -1386,8 +1457,8 @@
     "cat": "אטרקציות ובילויים",
     "origCurrency": "HUF",
     "origAmount": 12001,
-    "rate": 0.008984,
-    "nisAmount": 107.82,
+    "rate": 0.008945150892154623,
+    "nisAmount": 107.35,
     "source": "Laya (9191)"
   },
   {
@@ -1396,8 +1467,8 @@
     "cat": "אטרקציות ובילויים",
     "origCurrency": "HUF",
     "origAmount": 8000,
-    "rate": 0.008984,
-    "nisAmount": 71.87,
+    "rate": 0.008945150892154623,
+    "nisAmount": 71.56,
     "source": "Laya (9191)"
   },
   {
@@ -1406,8 +1477,8 @@
     "cat": "אטרקציות ובילויים",
     "origCurrency": "HUF",
     "origAmount": 8400,
-    "rate": 0.008984,
-    "nisAmount": 75.47,
+    "rate": 0.008945150892154623,
+    "nisAmount": 75.14,
     "source": "Laya (9191)"
   },
   {
@@ -1416,8 +1487,8 @@
     "cat": "אטרקציות ובילויים",
     "origCurrency": "HUF",
     "origAmount": 1600,
-    "rate": 0.008984,
-    "nisAmount": 14.37,
+    "rate": 0.008945150892154623,
+    "nisAmount": 14.31,
     "source": "Laya (9191)"
   },
   {
@@ -1426,8 +1497,8 @@
     "cat": "מסעדות ובתי קפה",
     "origCurrency": "HUF",
     "origAmount": 340,
-    "rate": 0.008984,
-    "nisAmount": 3.05,
+    "rate": 0.008945150892154623,
+    "nisAmount": 3.04,
     "source": "Laya (9191)"
   },
   {
@@ -1436,8 +1507,8 @@
     "cat": "מסעדות ובתי קפה",
     "origCurrency": "HUF",
     "origAmount": 17550,
-    "rate": 0.008984,
-    "nisAmount": 157.67,
+    "rate": 0.008945150892154623,
+    "nisAmount": 156.99,
     "source": "Laya (9191)"
   },
   {
@@ -1648,14 +1719,12 @@
 
     expensesData.forEach(item => {
       totalNis += item.nisAmount;
-      if (item.source.includes('הזמנה מראש') || item.source.includes('3893')) {
+      if (item.source.includes('מקס') || item.source.includes('3893') || item.source.includes('הזמנה')) {
         prebookNis += item.nisAmount;
       } else if (item.source.includes('9191')) {
         laya9191Nis += item.nisAmount;
       } else if (item.source.includes('1290')) {
         laya1290Nis += item.nisAmount;
-      } else {
-        prebookNis += item.nisAmount;
       }
     });
 
@@ -1717,7 +1786,7 @@
   }
 
   function renderPrebookTable() {
-    const prebookItems = expensesData.filter(i => i.source.includes('הזמנה מראש') || i.source.includes('3893'));
+    const prebookItems = expensesData.filter(i => i.source.includes('מקס') || i.source.includes('3893') || i.source.includes('הזמנה'));
     let desktopHtml = '';
     let mobileHtml = '';
 
@@ -1733,6 +1802,7 @@
           <td style="font-family:var(--font-mono);">${origSymbol}${i.origAmount.toLocaleString()}</td>
           <td style="font-family:var(--font-mono);">${i.rate.toFixed(4)}</td>
           <td class="table-price" style="color:var(--brand-cyan);">₪${i.nisAmount.toLocaleString('he-IL', {maximumFractionDigits:2})}</td>
+          <td><span class="source-tag-max">${i.source}</span></td>
         </tr>
       `;
 
@@ -1744,7 +1814,7 @@
           </div>
           <div class="m-bento-bot">
             <span class="v-badge ${badgeClass}">${i.cat}</span>
-            <span>${origSymbol}${i.origAmount.toLocaleString()} ${i.origCurrency}</span>
+            <span>${origSymbol}${i.origAmount.toLocaleString()} ${i.origCurrency} | ${i.source}</span>
           </div>
         </div>
       `;
@@ -1779,13 +1849,13 @@
     const selectedCategory = document.getElementById('category-filter').value;
 
     let filtered = expensesData.filter(i => {
-      const matchSearch = i.desc.toLowerCase().includes(query) || i.cat.toLowerCase().includes(query);
+      const matchSearch = i.desc.toLowerCase().includes(query) || i.cat.toLowerCase().includes(query) || (i.source && i.source.toLowerCase().includes(query));
       const matchCategory = (selectedCategory === 'all' || i.cat === selectedCategory);
       
       let matchSource = true;
       if (activeSourceFilter === '9191') matchSource = i.source.includes('9191');
       if (activeSourceFilter === '1290') matchSource = i.source.includes('1290');
-      if (activeSourceFilter === 'prebook') matchSource = (i.source.includes('הזמנה מראש') || i.source.includes('3893'));
+      if (activeSourceFilter === 'prebook') matchSource = (i.source.includes('מקס') || i.source.includes('3893') || i.source.includes('הזמנה'));
 
       return matchSearch && matchCategory && matchSource;
     });
@@ -1800,8 +1870,9 @@
       const origStr = i.origCurrency === 'NIS' ? '-' : `${i.origAmount.toLocaleString()} ${i.origCurrency}`;
       
       let tagHtml = i.source;
-      if (i.source.includes('9191')) tagHtml = `<span class="source-tag-9191">Laya (9191)</span>`;
-      else if (i.source.includes('1290')) tagHtml = `<span class="source-tag-1290">Laya (1290)</span>`;
+      if (i.source.includes('9191')) tagHtml = `<span class="source-tag-9191">${i.source}</span>`;
+      else if (i.source.includes('1290')) tagHtml = `<span class="source-tag-1290">${i.source}</span>`;
+      else if (i.source.includes('מקס')) tagHtml = `<span class="source-tag-max">${i.source}</span>`;
 
       desktopHtml += `
         <tr>
